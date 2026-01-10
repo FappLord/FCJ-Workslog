@@ -22,7 +22,7 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ tháng 01/2026
 
-![Ảnh đại diện](/images/avatar.jpg)
+![Ảnh đại diện](images/avatar.jpg)
 
 ---
 
