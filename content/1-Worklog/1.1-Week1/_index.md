@@ -1,57 +1,45 @@
 ---
-title: "Week 1 Worklog"
-date: 2024-01-01
+title: "Week 1: Onboarding & Setup Environment"
+date: 2026-01-09T09:00:00+07:00
 weight: 1
 chapter: false
-pre: " <b> 1.1. </b> "
+pre: " <b> 1. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### 1. Objectives
 
-### Week 1 Objectives:
+* **Onboarding:** Connect with FCJ members, understand company culture and regulations.
+* **Technical:** Set up AWS environment (Account, CLI) and complete basic practical labs (Explore AWS).
+* **Management (Team Lead):** Establish working infrastructure and assign roles for Team **TheBois**.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### 2. Weekly Tasks Breakdown
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Main Task | Details | Status |
+|:---:|:---|:---|:---:|
+| **Mon** | **Onboarding** | - Networking with FCJ members.<br>- Reading and researching internship regulations and workflows. | Completed |
+| **Tue** | **AWS Overview** | - Researching foundational AWS service groups:<br>&nbsp;+ Compute (EC2, Lambda)<br>&nbsp;+ Storage (S3, EBS)<br>&nbsp;+ Database (RDS, DynamoDB)<br>&nbsp;+ Networking (VPC) | Completed |
+| **Wed** | **Setup Environment** | - Creating AWS Free Tier account.<br>- Installing and configuring **AWS CLI** on local machine.<br>- Connecting terminal to AWS account via Access Key/Secret Key. | Completed |
+| **Thu** | **Explore AWS Labs** | - Completed **5/5 activities** in "Explore AWS" section to earn Credits:<br>&nbsp;1. Create an Aurora/RDS database<br>&nbsp;2. Create a Web App using AWS Lambda<br>&nbsp;3. Set up a cost budget using AWS Budgets<br>&nbsp;4. Use a foundation model in **Amazon Bedrock**<br>&nbsp;5. Launch an EC2 Instance | Completed |
+| **Fri** | **Team Management** | - **Setup Communication:** Created Discord server and set up discussion channels.<br>- **Setup Source Control:** Initialized GitHub Organization/Repo for Team TheBois.<br>- **Role Division:** Conducted team meeting, assigned specific roles (AI, IA, Cyber, Backend) to members. | Completed |
 
+### 3. Key Results (Deliverables)
 
-### Week 1 Achievements:
+#### Technical:
+* **Environment:** Successfully configured AWS CLI, ensuring smooth interaction with AWS from local machine.
+* **Practice:** Achieved **100% (5/5)** completion of AWS starter labs:
+    * Experienced deploying AI models on **Amazon Bedrock**.
+    * Successfully deployed a serverless app with **Lambda**.
+    * Initialized database and EC2 instance.
+    * Set up cost alerts (Budgets) for resource management.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Management (Team TheBois):
+* **Infrastructure:** * Established a shared workspace on Discord.
+    * Created a GitHub Repo for managing upcoming project source code.
+* **Personnel:** All members (Binh, Tri, Hien, Tung, Vinh) clearly understand their roles and responsibilities.
 
-* Successfully created and configured an AWS Free Tier account.
+### 4. Issues & Solutions
+* **Issue:** Initial difficulties with IAM User permissions.
+* **Solution:** Read "AWS IAM Best Practices" documentation and reconfigured Policies accordingly.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+---
+> **Self-evaluation:** Week 1 was productive with successful technical foundation setup and team organization. Ready for more advanced tasks next week.
