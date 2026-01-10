@@ -1,6 +1,6 @@
 baseURL = "https://fapplord.github.io/FCJ-Workslog/"
-relativeURLs = true
-canonifyURLs = false
+relativeURLs = false
+canonifyURLs = true
 defaultContentLanguage = "en"
 
 # Change the default theme to be use when building the site with Hugo
