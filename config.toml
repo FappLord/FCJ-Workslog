@@ -1,5 +1,5 @@
 baseURL = "https://fapplord.github.io/FCJ-Workslog/"
-relativeURLs = false
+relativeURLs = true
 canonifyURLs = false
 defaultContentLanguage = "en"
 
