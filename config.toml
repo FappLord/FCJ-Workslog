@@ -14,7 +14,7 @@ home = [ "HTML", "RSS", "JSON"]
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
   themeVariant = "workshop"
   # Git hub repo link
-  editURL = ""
+  editURL = "https://github.com/FappLord/FCJ-Workslog"
   description = "Official Internship Report of Vo Tan Phat - AI Team Lead (TheBois) at First Cloud AI Journey 2026."
   author = "votanphata2.c3hn2022@gmail.com"
   showVisitedLinks = true
