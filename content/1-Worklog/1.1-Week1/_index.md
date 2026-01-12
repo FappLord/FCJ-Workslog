@@ -33,7 +33,7 @@ pre: " <b> 1. </b> "
     * Set up cost alerts (Budgets) for resource management.
 
 #### Management (Team TheBois):
-* **Infrastructure:** * Established a shared workspace on Discord.
+* **Infrastructure:** Established a shared workspace on Discord.
     * Created a GitHub Repo for managing upcoming project source code.
 * **Personnel:** All members (Binh, Tri, Hien, Tung, Vinh) clearly understand their roles and responsibilities.
 
@@ -41,5 +41,3 @@ pre: " <b> 1. </b> "
 * **Issue:** Initial difficulties with IAM User permissions.
 * **Solution:** Read "AWS IAM Best Practices" documentation and reconfigured Policies accordingly.
 
----
-> **Self-evaluation:** Week 1 was productive with successful technical foundation setup and team organization. Ready for more advanced tasks next week.
