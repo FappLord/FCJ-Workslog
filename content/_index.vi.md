@@ -20,7 +20,7 @@ chapter: false
 
 &emsp; **Team:** **TheBois**
 
-&emsp; **Thời gian thực tập:** Từ tháng 01/2026
+&emsp; **Thời gian thực tập:** Từ ngày 05/01/2026
 
 ![Ảnh đại diện](/images/avatar.jpg)
 
