@@ -20,7 +20,7 @@ This repository serves as the official documentation and weekly worklog for my i
 The repository is organized by weeks, corresponding to the internship timeline:
 
 * **Week 1:** Onboarding, Environment Setup (AWS CLI, GitHub, Discord), and AWS Exploration Labs.
-* **Week 2:** (Upcoming).
+* **Week 2:** Storage & Databases (S3, EBS, RDS), Hands-on File Upload System implementation, and finalized Project Proposal ("Website Security Baseline Assessment Platform").
 
 ## Technology Stack
 
