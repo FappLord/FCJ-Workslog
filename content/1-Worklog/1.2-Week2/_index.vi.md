@@ -1,59 +1,43 @@
 ---
-title: "Worklog Tuần 2"
-date: 2024-01-01
-weight: 1
+title: "Tuần 2: Lưu trữ, Cơ sở dữ liệu & Khởi động Dự án"
+date: 2026-01-16
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### 1. Mục tiêu tuần 2
 
-### Mục tiêu tuần 2:
+* **Kỹ thuật cốt lõi:** Tìm hiểu sâu về các dịch vụ Lưu trữ (S3, EBS) và Cơ sở dữ liệu (RDS) của AWS; thực hành xây dựng hệ thống upload file.
+* **Khởi động dự án:** Hoàn thiện đề xuất cho dự án **"Website Security Baseline Assessment Platform"** – công cụ hỗ trợ đánh giá nhanh rủi ro bảo mật.
+* **Nâng cao kỹ năng:** Củng cố kiến thức NLP thông qua các chứng chỉ Coursera để phục vụ cho khía cạnh AI của dự án thực tập.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### 2. Chi tiết công việc trong tuần (Weekly Tasks Breakdown)
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc chính | Chi tiết | Trạng thái | Link / Minh chứng |
+|:---:|:---|:---|:---:|:---|
+| **Hai** | **Lưu trữ & CSDL** | - Nghiên cứu **S3** (Buckets, lifecycle policies).<br>- Nghiên cứu **EBS** (Volumes, snapshots) & **RDS** (Cài đặt, quản lý).<br>- *Nguồn: Chương trình học Tuần 2*. | Hoàn thành | [Link tới Khóa học/Tài liệu] |
+| **Ba** | **Thực hành Lab** | - **Xây dựng hệ thống upload file:**<br>&nbsp;+ Cấu hình S3 bucket để lưu trữ.<br>&nbsp;+ Kết nối backend với S3 để xử lý file. | Hoàn thành | [Link tới GitHub/Repo] |
+| **Tư** | **Đề xuất dự án** | - **Soạn thảo Proposal:** Xác định phạm vi cho "Website Security Baseline Assessment Platform".<br>- **Chốt tính năng:**<br>&nbsp;+ Kiểm tra cơ bản: HTTPS/SSL, Robots.txt.<br>&nbsp;+ Quét lỗ hổng: SQL Injection, XSS, File Uploads.<br>- **Kiến trúc:** Thiết kế core độc lập (chạy Local/VPS/AWS) không phụ thuộc cứng vào hạ tầng cloud. | Hoàn thành | [Link tới File PDF Proposal] |
+| **Năm** | **Chứng chỉ AI/NLP** | - Hoàn thành 2 khóa học DeepLearning.AI trên Coursera:<br>&nbsp;1. NLP with Attention Models.<br>&nbsp;2. NLP with Classification and Vector Spaces. | Hoàn thành | [Link tới Cert 1]<br>[Link tới Cert 2] |
+| **Sáu** | **AWS Specialization** | - Tìm kiếm và lên kế hoạch học "AWS Fundamentals Specialization".<br>- Review tuần và họp nhóm rút kinh nghiệm. | Đang thực hiện | [Link tới khóa AWS] |
 
+### 3. Kết quả chính (Key Results)
 
-### Kết quả đạt được tuần 2:
+#### Kỹ thuật & Thực hành:
+* **Thành thạo Lưu trữ:** Đã hiểu và quản lý được S3 Lifecycles và EBS Snapshots.
+* **Triển khai thực tế:** Xây dựng thành công **Hệ thống Upload File** sử dụng AWS S3, đảm bảo dữ liệu được lưu trữ bền vững.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Dự án (Team TheBois):
+* **Hoàn thiện Proposal:** Đã xong đề xuất cho **Website Security Baseline Assessment Platform**.
+* **Xác định phạm vi:** Thống nhất tập trung vào "Đánh giá nền tảng" (tiền kiểm thử/pre-pentest) để nhận diện rủi ro phổ biến như Injection, Phân quyền (Access Control), và Cấu hình sai (Security Misconfiguration).
+* **Chiến lược kiến trúc:** Quyết định kiến trúc linh hoạt: AWS dùng để lưu trữ báo cáo/log, nhưng core logic quét lỗi hoạt động độc lập (Portable).
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+#### Chứng chỉ & Học tập:
+* **Hoàn thành Coursera:** Đạt 2 chứng chỉ từ DeepLearning.AI (hoàn thành ngày 15/01/2026):
+    * *Natural Language Processing with Attention Models*
+    * *Natural Language Processing with Classification and Vector Spaces*
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+### 4. Vấn đề & Giải pháp (Issues & Solutions)
+* **Vấn đề:** Khó khăn trong việc xác định phạm vi pháp lý khi quét các website bên ngoài.
+* **Giải pháp:** Đã làm rõ trong proposal - Tuân thủ nguyên tắc "Chỉ thực hiện khi có sự đồng ý bằng văn bản".
