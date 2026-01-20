@@ -1,6 +1,6 @@
 ---
 title: "Week 1: Onboarding & Setup Environment"
-date: 2026-01-09
+date: 2026-01-05
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "

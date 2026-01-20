@@ -1,6 +1,6 @@
 ---
 title: "Tuần 1: Giới thiệu & Thiết lập môi trường làm việc"
-date: 2026-01-09
+date: 2026-01-05
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
