@@ -1,59 +1,42 @@
 ---
-title: "Worklog Tuần 3"
-date: 2026-01-23
+title: "Tuần 3: Mạng & Bảo mật Hạ tầng (Networking & Infrastructure Security)"
+date: 2026-01-19
 weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### 1. Mục tiêu
 
-### Mục tiêu tuần 3:
+* **Làm chủ Network:** Hiểu sâu về kiến trúc mạng lõi của AWS bao gồm VPC, chia mạng con (subnetting) và các ranh giới bảo mật mạng (Security Groups vs NACLs).
+* **Nền tảng Hạ tầng:** Cấu hình Internet Gateways (IGW) và NAT Gateways để quản lý lưu lượng mạng cho dự án "Website Security Baseline Assessment Platform".
+* **Nâng cao AI/NLP:** Hoàn thành chuỗi chuyên sâu về NLP bằng việc làm chủ các mô hình chuỗi (Sequence Models) để hỗ trợ tích hợp AI cho dự án trong tương lai.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### 2. Chi tiết công việc tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Ngày | Nhiệm vụ chính | Chi tiết | Trạng thái | Liên kết / Bằng chứng |
+|:---:|:---|:---|:---:|:---|
+| **Thứ 2** | **Cốt lõi về Networking** | - **VPC Deep Dive:** Nghiên cứu các khái niệm VPC, khối CIDR và Subnetting (Public vs. Private).<br>- **Kết nối:** Cấu hình Internet Gateway (IGW) cho truy cập công khai và NAT Gateway cho các instance riêng tư.<br>- *Nguồn: Chương trình học Tuần 3.* | Hoàn thành | \ |
+| **Thứ 3** | **Bảo mật Mạng** | - **Các lớp bảo mật:** Phân tích sự khác biệt giữa Security Groups (Stateful - Có trạng thái) và NACLs (Stateless - Không trạng thái).<br>- **Thực hành Lab:** Thiết lập môi trường VPC bảo mật để chuẩn bị cho việc triển khai dự án sau này. | Hoàn thành | \ |
+| **Thứ 4** | **AWS Specialization** | - Tiếp tục khóa **"AWS Fundamentals Specialization"** trên Coursera.<br>- Tập trung vào các module liên quan đến dịch vụ cốt lõi và khái niệm bảo mật của AWS. | Đang thực hiện | [Link khóa AWS Fundamentals Specialization](https://www.coursera.org/programs/fptu-spring-2026-6010y/specializations/aws-fundamentals?source=search) |
+| **Thứ 5** | **Hạ tầng Dự án** | - Đánh giá các yêu cầu mạng cho **Website Security Baseline Assessment Platform**.<br>- Thảo luận với team *TheBois* về cách cô lập engine quét lỗ hổng bằng VPC để đảm bảo an toàn. | Hoàn thành | \ |
+| **Thứ 6** | **Chứng chỉ NLP** | - Hoàn thành khóa học cuối cùng của chương trình chuyên sâu:<br>&nbsp;**Natural Language Processing with Sequence Models**.<br>- Bao gồm các kiến thức về RNNs, LSTMs và GRUs cho xử lý văn bản nâng cao. | Hoàn thành | [Link chứng chỉ](https://www.coursera.org/account/accomplishments/verify/MKFJD7RKYZC0) |
 
+### 3. Kết quả chính (Deliverables)
 
-### Kết quả đạt được tuần 3:
+#### Kỹ thuật & Thực hành:
+* **Kiến trúc VPC:** Đã thiết kế thành công một VPC tùy chỉnh với các subnet public/private, đảm bảo sơ đồ mạng an toàn.
+* **Quản lý lưu lượng:** Triển khai Route Tables, IGW và NAT Gateways để kiểm soát hiệu quả lưu lượng vào/ra (inbound/outbound).
+* **Tư duy Bảo mật:** Phân biệt rõ ràng các trường hợp sử dụng cho Security Groups (cấp độ instance) so với NACLs (cấp độ subnet).
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Dự án (Team TheBois):
+* **Chiến lược Hạ tầng:** Đồng bộ thiết lập mạng với nhu cầu của **Website Security Baseline Assessment Platform** — đảm bảo công cụ quét hoạt động trong môi trường được kiểm soát, tránh việc lộ thông tin ngoài ý muốn trong quá trình kiểm tra lỗ hổng.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+#### Chứng chỉ & Học tập:
+* **Hoàn thành Coursera:** Đạt chứng chỉ từ DeepLearning.AI:
+    * *Natural Language Processing with Sequence Models*
+    * *(Đây là dấu mốc hoàn thành toàn bộ chương trình NLP Specialization)*
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+### 4. Vấn đề & Giải pháp
+* **Vấn đề:** Nhầm lẫn giữa cơ chế stateful (của Security Groups) và stateless (của NACLs) trong quá trình thiết lập bài Lab.
+* **Giải pháp:** Thực hiện kiểm tra kết nối (ping) để quan sát cách lưu lượng trả về được xử lý, qua đó làm rõ việc SG tự động cho phép lưu lượng phản hồi còn NACL thì không.
