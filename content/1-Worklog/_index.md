@@ -16,11 +16,11 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
 
-**Week 2:** [Doing task A...](1.2-week2/)
+**Week 2:** [Storage, Databases & Project Inception](1.2-week2/)
 
-**Week 3:** [Doing task B...](1.3-week3/)
+**Week 3:** [Networking & Infrastructure Security](1.3-week3/)
 
-**Week 4:** [Doing task C...](1.4-week4/)
+**Week 4:** [Identity, Security & re:Invent Updates](1.4-week4/)
 
 **Week 5:** [Doing task D...](1.5-week5/)
 
