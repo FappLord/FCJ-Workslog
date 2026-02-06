@@ -1,125 +1,92 @@
 ---
-title: "Event 1"
-date: 2024-01-01
+title: "Sự kiện: AWS re:Invent Recap"
+date: 2026-01-27
 weight: 1
 chapter: false
-pre: " <b> 4.1. </b> "
+pre: " <b> 1.4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Báo cáo tổng hợp: “AWS re:Invent 2025 Recap (Vietnam)”
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+### Thông tin sự kiện
+| | |
+|:---|:---|
+| **Thời gian** | 27 Tháng 1, 2026 |
+| **Địa điểm** | Văn phòng AWS Vietnam (Tầng 26 & 36), TP. Hồ Chí Minh |
+| **Vai trò** | Người tham dự (FCJ Cloud Intern) |
 
-### Mục Đích Của Sự Kiện
+### Mục tiêu tham dự
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- Cập nhật những công bố quan trọng nhất từ hội nghị AWS re:Invent 2025 (Las Vegas).
+- Tìm hiểu sâu về Generative AI, đặc biệt là Agentic AI (AI tác vụ) và Amazon Bedrock.
+- Khám phá các tối ưu hóa mới về dữ liệu và hạ tầng (SageMaker, S3).
+- Giao lưu, kết nối với các AWS Solution Architects và cộng đồng công nghệ.
 
-### Danh Sách Diễn Giả
+### Diễn giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- **Anh Thi** – Solution Architect (Chủ đề: Generative AI & Agents)
+- **Anh Tùng** – Diễn giả (Chủ đề: OpenSearch & Agentic Search)
+- **Các Solution Architect & Account Manager khác từ AWS**
 
-### Nội Dung Nổi Bật
+### Nội dung nổi bật (Key Highlights)
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### Phiên 1: Generative AI & Agents
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+- **Mô hình Amazon Nova:** Giới thiệu các mô hình nền tảng hiệu suất cao mới.
+- **Bedrock Agents:** Đi sâu vào Orchestration (Điều phối), Flows, và các tính năng mới như **Memory (Bộ nhớ)** và **Guardrails (Vành đai bảo vệ)**.
+- **Agentic AI:** Sự chuyển dịch từ chatbot đơn giản sang các "Agent" tự chủ có khả năng thực thi quy trình nhiều bước.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### Phiên 2: SageMaker Unified Studio & Cập nhật S3
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+- **Unified Studio:** Một IDE duy nhất kết nối Data Engineers, Data Scientists và AI Engineers, xóa bỏ rào cản giữa các team.
+- **S3 Tables:** Hỗ trợ định dạng bảng Apache Iceberg ngay trên S3.
+- **S3 Vector:** Tính năng mới cho phép lưu trữ vector trực tiếp trên S3, giúp giảm chi phí đáng kể so với việc dùng vector database chuyên dụng.
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+#### Phiên 3 & 4: Tìm kiếm & Đa phương thức (Multimodal)
 
-#### Domain-Driven Design (DDD)
+- **OpenSearch Serverless:** Tích hợp với giao thức MCP và Agentic Memory.
+- **Nova Multimodal Embeddings:** Chuyển đổi video và hình ảnh thành vector để tìm kiếm.
+- **Bedrock Data Automation:** Tự động trích xuất thông tin từ dữ liệu đa phương tiện.
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+#### Phiên 5: Hạ tầng AI
 
-#### Event-Driven Architecture
+- **SageMaker HyperPod:** Quản lý cụm GPU quy mô lớn.
+- **SageMaker MLflow:** Quản lý toàn bộ vòng đời dự án Machine Learning.
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+### Bài học rút ra (Key Takeaways)
 
-#### Compute Evolution
+#### Tương lai là Agentic AI
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+- **Quy trình tự chủ:** Xu hướng đang chuyển từ "Prompt Engineering" sang "Agent Engineering". Các Agent có bộ nhớ có thể duy trì ngữ cảnh theo thời gian và thực hiện nhiệm vụ phức tạp mà không cần con người can thiệp liên tục.
+- **Bảo mật là then chốt:** Khi Agent trở nên tự chủ, việc thiết lập Guardrails (chính sách an toàn) là bắt buộc.
 
-#### Amazon Q Developer
+#### Tối ưu hóa Dữ liệu & Tính toán
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+- **Hiệu quả chi phí:** **S3 Vector** là giải pháp đột phá cho các dự án cần tìm kiếm vector (như RAG) nhưng ngân sách hạn chế.
+- **Hợp tác:** **SageMaker Unified Studio** giúp quy trình chuẩn bị dữ liệu và huấn luyện mô hình diễn ra liền mạch trong một môi trường.
 
-### Những Gì Học Được
+### Ứng dụng vào công việc
 
-#### Tư Duy Thiết Kế
+- **Tích hợp vào Dự án (Security Platform):**
+    - Đánh giá **Bedrock Agents** để tự động hóa quy trình "quét lỗ hổng" (ví dụ: agent chạy scan, phân tích log và tự soạn báo cáo).
+    - Triển khai **S3 Vector** để lưu trữ log và các mẫu nhận diện lỗ hổng (signatures) một cách hiệu quả cho backend.
+- **Tinh chỉnh Kiến trúc:** Cân nhắc sử dụng **Cognito** để quản lý người dùng thay vì tự xây dựng module auth.
+- **Best Practices:** Áp dụng tư duy "Serverless first" học được từ sự kiện để giữ cho hạ tầng dự án tinh gọn.
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+### Trải nghiệm sự kiện
 
-#### Kiến Trúc Kỹ Thuật
+Tham dự **“AWS re:Invent 2025 Recap”** tại **Văn phòng AWS Vietnam** là một điểm nhấn quan trọng trong kỳ thực tập, giúp tôi kết nối kiến thức đám mây cơ bản với các xu hướng AI tiên tiến nhất.
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+#### Mở rộng tầm nhìn
+- Các phiên chia sẻ đã làm rõ rằng **Agentic AI** là tương lai gần. Việc xem demo Flow Agent phân tích dữ liệu bán hàng đã khơi dậy ý tưởng cho tính năng báo cáo trong dự án của team.
+- Hiểu về **Multimodal RAG** giúp tôi thấy được khả năng mở rộng không chỉ xử lý văn bản mà còn cả hình ảnh/video – điều cần thiết cho các giai đoạn sau của Security Platform (ví dụ: phân tích ảnh chụp màn hình web).
 
-#### Chiến Lược Hiện Đại Hóa
+#### Kiểm chứng giải pháp kỹ thuật
+- Việc ra mắt **S3 Vector** đã xác nhận nhu cầu của team về một giải pháp lưu trữ tiết kiệm chi phí. Đây là câu trả lời trực tiếp cho vấn đề chi phí lưu trữ log mà chúng tôi đang gặp phải.
+- Trao đổi với anh Thi và các SA khác giúp tôi giải tỏa các thắc mắc về **IAM Policies** và các mô hình **Serverless** mà tôi đã gặp khó khăn trong Tuần 3.
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+#### Kết nối cộng đồng
+- Không khí tại văn phòng AWS (Tầng 26 & 36) rất sôi động, với nhiều builders và developers cùng chia sẻ các bài toán thực tế.
+- Tôi đã có cơ hội thảo luận về dự án của team **"TheBois"** với các chuyên gia trong ngành và nhận được những phản hồi giá trị về kiến trúc đề xuất.
 
-### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
-
-### Trải nghiệm trong event
-
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
-
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
-
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
-
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+> Nhìn chung, sự kiện không chỉ cập nhật kiến thức kỹ thuật mà còn cung cấp các công cụ cụ thể (Agents, S3 Vector) mà tôi có thể áp dụng ngay vào dự án **Website Security Baseline Assessment Platform**.
