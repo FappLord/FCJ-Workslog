@@ -34,9 +34,9 @@ Dưới đây là cơ cấu tổ chức và phân công chuyên môn của team:
 | **1** | **Võ Tấn Phát** | **Leader** | **AI** | Quản lý chung & Định hướng AI |
 | 2 | Dương Nguyên Bình | Member | AI | Triển khai giải pháp AI |
 | 3 | Nguyễn Đức Trí | Member | IA | Information Assurance |
-| 4 | Bùi Minh Hiển | Member | IA | Information Assurance |
+| 4 | Trần Vinh | Member | IA | Information Assurance |
 | 5 | Nguyễn Duy Tùng | Member | IA | Information Assurance |
-| 6 | Trần Vinh | Member | IA / Cyber | Cyber Security & Backend |
+| 6 | Bùi Minh Hiển | Member | IA / Cyber | Cyber Security & Backend |
 
 ---
 

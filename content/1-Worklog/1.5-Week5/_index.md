@@ -1,57 +1,47 @@
 ---
-title: "Week 5 Worklog"
-date: 2026-02-06
+title: "Week 5: Serverless Deep Dive & Project Ideation"
+date: 2026-02-02
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### 1. Objectives
 
-### Week 5 Objectives:
+* **Serverless Mastery:** Deep dive into AWS Lambda, API Gateway, and DynamoDB — the core serverless building blocks.
+* **Certification Progress:** Continue the AWS Fundamentals Specialization on Coursera.
+* **Project Ideation:** Brainstorm and evaluate project ideas with Team TheBois for the main FCJ internship project.
+* **Pre-Tet Wrap-Up:** Consolidate learning from Weeks 1–4 before the Tet holiday break.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### 2. Weekly Tasks Breakdown
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Main Task | Details | Status |
+|:---:|:---|:---|:---:|
+| **Mon** | **Lambda Deep Dive** | - Studied AWS Lambda execution model, cold starts, and pricing.<br>- Explored Lambda function URLs as lightweight API endpoints.<br>- Practiced creating Lambda functions with Node.js runtime. | Completed |
+| **Tue** | **API Gateway & DynamoDB** | - Studied API Gateway REST vs HTTP API differences.<br>- Deep dive into DynamoDB: partition keys, sort keys, GSIs, and query patterns.<br>- Explored DynamoDB's PAY_PER_REQUEST billing mode. | Completed |
+| **Wed** | **Hands-on Lab** | - Built a simple serverless REST API:<br>&nbsp;+ Lambda function handling CRUD operations.<br>&nbsp;+ DynamoDB table as data store.<br>&nbsp;+ Tested via Lambda Function URL. | Completed |
+| **Thu** | **Project Brainstorming** | - Team TheBois meeting to discuss project directions.<br>- Evaluated ideas: secure code distribution, license management, cloud-based code editor.<br>- Initial concept for **GuardScript** — a platform to securely distribute and protect source code with licensing. | Completed |
+| **Fri** | **Pre-Tet Review** | - Consolidated notes from Weeks 1–5.<br>- Continued AWS Fundamentals Specialization (Coursera).<br>- Prepared task backlog for post-Tet work.<br>- *Note: Tet holiday break starts next week (2 weeks off).* | Completed |
 
+### 3. Key Results (Deliverables)
 
-### Week 5 Achievements:
+#### Technical:
+* **Serverless Knowledge:** Gained practical understanding of the Lambda + API Gateway + DynamoDB stack, which would later form the foundation for the GuardScript AWS deployment.
+* **Hands-on Practice:** Successfully built and tested a serverless CRUD API, validating the feasibility of a Lambda-based backend architecture.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Project (Team TheBois):
+* **Concept Defined:** Identified the core idea for **GuardScript** — a secure code distribution platform addressing the problem of unauthorized code redistribution.
+* **Initial Feature List:** Brainstormed key features: encrypted script delivery, license management, hardware ID locking, workspace isolation, access control.
 
-* Successfully created and configured an AWS Free Tier account.
+### 4. Issues & Solutions
+* **Issue:** DynamoDB query patterns require careful upfront design of partition keys and GSIs, unlike SQL where ad-hoc queries are straightforward.
+* **Solution:** Studied the Single-Table Design vs Multi-Table Design patterns. Decided that a multi-table approach with targeted GSIs would be cleaner for the GuardScript use case.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+### 5. Lessons Learned
+* Serverless architecture requires a different mindset than traditional server-based design — statelessness, cold starts, and pay-per-use pricing all influence architecture decisions.
+* DynamoDB schema design must be query-driven, not entity-driven.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+### 6. Next Steps
+* Enjoy Tet holiday break (2 weeks).
+* Return with a finalized project scope for GuardScript.
+* Begin architecture design and development planning.

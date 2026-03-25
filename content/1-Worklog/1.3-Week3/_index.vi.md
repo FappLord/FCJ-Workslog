@@ -12,17 +12,17 @@ pre: " <b> 1.3. </b> "
 * **Nền tảng Hạ tầng:** Cấu hình Internet Gateways (IGW) và NAT Gateways để quản lý lưu lượng mạng cho dự án "Website Security Baseline Assessment Platform".
 * **Nâng cao AI/NLP:** Hoàn thành chuỗi chuyên sâu về NLP bằng việc làm chủ các mô hình chuỗi (Sequence Models) để hỗ trợ tích hợp AI cho dự án trong tương lai.
 
-### 2. Chi tiết công việc tuần
+### 2. Chi tiết công việc trong tuần
 
-| Ngày | Nhiệm vụ chính | Chi tiết | Trạng thái | Liên kết / Bằng chứng |
-|:---:|:---|:---|:---:|:---|
-| **Thứ 2** | **Cốt lõi về Networking** | - **VPC Deep Dive:** Nghiên cứu các khái niệm VPC, khối CIDR và Subnetting (Public vs. Private).<br>- **Kết nối:** Cấu hình Internet Gateway (IGW) cho truy cập công khai và NAT Gateway cho các instance riêng tư.<br>- *Nguồn: Chương trình học Tuần 3.* | Hoàn thành | \ |
-| **Thứ 3** | **Chứng chỉ NLP** | - Hoàn thành khóa học cuối cùng của chương trình chuyên sâu:<br>&nbsp;**Natural Language Processing with Sequence Models**.<br>- Bao gồm các kiến thức về RNNs, LSTMs và GRUs cho xử lý văn bản nâng cao. | Hoàn thành | [Link chứng chỉ](https://www.coursera.org/account/accomplishments/verify/MKFJD7RKYZC0) |
-| **Thứ 4** | **AWS Specialization** | - Tiếp tục khóa **"AWS Fundamentals Specialization"** trên Coursera.<br>- Tập trung vào các module liên quan đến dịch vụ cốt lõi và khái niệm bảo mật của AWS. | Đang thực hiện | [Link khóa AWS Fundamentals Specialization](https://www.coursera.org/programs/fptu-spring-2026-6010y/specializations/aws-fundamentals?source=search) |
-| **Thứ 5** | **Hạ tầng Dự án** | - Đánh giá các yêu cầu mạng cho **Website Security Baseline Assessment Platform**.<br>- Thảo luận với team *TheBois* về cách cô lập engine quét lỗ hổng bằng VPC để đảm bảo an toàn. | Hoàn thành | \ |
-| **Thứ 6** | **Bảo mật Mạng** | - **Các lớp bảo mật:** Phân tích sự khác biệt giữa Security Groups (Stateful - Có trạng thái) và NACLs (Stateless - Không trạng thái).<br>- **Thực hành Lab:** Thiết lập môi trường VPC bảo mật để chuẩn bị cho việc triển khai dự án sau này. | Hoàn thành | \ |
+| Thứ | Công việc chính | Chi tiết | Trạng thái |
+|:---:|:---|:---|:---:|
+| **Hai** | **Cốt lõi về Networking** | - **VPC Deep Dive:** Nghiên cứu các khái niệm VPC, khối CIDR và Subnetting (Public vs. Private).<br>- **Kết nối:** Cấu hình Internet Gateway (IGW) cho truy cập công khai và NAT Gateway cho các instance riêng tư.<br>- *Nguồn: Chương trình học Tuần 3.* | Hoàn thành |
+| **Ba** | **Chứng chỉ NLP** | - Hoàn thành khóa học cuối cùng của chương trình chuyên sâu:<br>&nbsp;**Natural Language Processing with Sequence Models**.<br>- Bao gồm các kiến thức về RNNs, LSTMs và GRUs cho xử lý văn bản nâng cao.<br>- [Link chứng chỉ](https://www.coursera.org/account/accomplishments/verify/MKFJD7RKYZC0) | Hoàn thành |
+| **Tư** | **AWS Specialization** | - Tiếp tục khóa **"AWS Fundamentals Specialization"** trên Coursera.<br>- Tập trung vào các module liên quan đến dịch vụ cốt lõi và khái niệm bảo mật của AWS.<br>- [AWS Fundamentals Specialization](https://www.coursera.org/programs/fptu-spring-2026-6010y/specializations/aws-fundamentals?source=search) | Đang thực hiện |
+| **Năm** | **Hạ tầng Dự án** | - Đánh giá các yêu cầu mạng cho **Website Security Baseline Assessment Platform**.<br>- Thảo luận với team *TheBois* về cách cô lập engine quét lỗ hổng bằng VPC để đảm bảo an toàn. | Hoàn thành |
+| **Sáu** | **Bảo mật Mạng** | - **Các lớp bảo mật:** Phân tích sự khác biệt giữa Security Groups (Stateful - Có trạng thái) và NACLs (Stateless - Không trạng thái).<br>- **Thực hành Lab:** Thiết lập môi trường VPC bảo mật để chuẩn bị cho việc triển khai dự án sau này. | Hoàn thành |
 
-### 3. Kết quả chính (Deliverables)
+### 3. Kết quả đạt được
 
 #### Kỹ thuật & Thực hành:
 * **Kiến trúc VPC:** Đã thiết kế thành công một VPC tùy chỉnh với các subnet public/private, đảm bảo sơ đồ mạng an toàn.

@@ -1,59 +1,55 @@
 ---
-title: "Worklog Tuần 7"
-date: 2026-02-20
+title: "Tuần 7: GuardScript — Phát triển Backend cốt lõi"
+date: 2026-03-02
 weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### 1. Mục tiêu
 
-### Mục tiêu tuần 7:
+* **Nền tảng Backend:** Khởi tạo backend GuardScript với Express.js và triển khai database schema bằng SQLite.
+* **Hệ thống xác thực:** Xây dựng module auth hoàn chỉnh với JWT tokens và PBKDF2 password hashing.
+* **Các module cốt lõi:** Triển khai quản lý workspace và các thao tác CRUD cơ bản cho project.
+* **Bắt đầu phát triển:** Dự án GuardScript chính thức bắt đầu ngày **06/03/2026**.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### 2. Chi tiết công việc trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc chính | Chi tiết | Trạng thái |
+|:---:|:---|:---|:---:|
+| **Hai** | **Rà soát kiến trúc** | - Chốt kiến trúc backend với team.<br>- Rà soát controller-service-util pattern.<br>- Chuẩn bị môi trường phát triển cho prototyping nhanh. | Hoàn thành |
+| **Ba** | **Thiết lập Express.js** | - Khởi tạo ứng dụng Express.js với middleware stack.<br>- Cấu hình CORS, JSON body parsing, cookie handling.<br>- Thiết lập cấu trúc route cho 70+ API endpoints trên 10 controllers. | Hoàn thành |
+| **Tư** | **Database Schema** | - Thiết kế và triển khai SQLite schema bao gồm:<br>&nbsp;+ Users table (id, email, password hash, status, timestamps)<br>&nbsp;+ Workspaces table (id, name, owner, loader key, encryption key, settings)<br>&nbsp;+ Projects table (id, workspace, name, secret key, entry point, settings)<br>&nbsp;+ Project Files, Licenses, Access Lists, Logs, Team Members tables. | Hoàn thành |
+| **Năm** | **Module Auth** | - Triển khai `src/utils/auth.js`:<br>&nbsp;+ PBKDF2-SHA256 password hashing (210.000 iterations, 16-byte salt)<br>&nbsp;+ Tạo và xác thực JWT token bằng HMAC-SHA256<br>&nbsp;+ Trích xuất token từ Authorization header và cookies<br>&nbsp;+ So sánh timing-safe để chống timing attacks. | Hoàn thành |
+| **Sáu** | **Workspace & User Controllers** | - Xây dựng `authController.js`: đăng ký, đăng nhập, hồ sơ, đổi mật khẩu, xóa tài khoản.<br>- Xây dựng `workspaceController.js`: tạo, liệt kê, cập nhật, xóa workspace; bảo vệ PIN; logs. | Hoàn thành |
 
+### 3. Kết quả đạt được
 
-### Kết quả đạt được tuần 7:
+#### Kỹ thuật:
+* **Backend Server:** Express.js server hoạt động đầy đủ với routing có cấu trúc cho tất cả API endpoints.
+* **Database Layer:** SQLite schema hoàn chỉnh với 10+ tables, foreign key và indexed columns.
+* **Hệ thống Auth:** Xác thực đạt chất lượng production:
+    * PBKDF2 với 210K iterations.
+    * Phát hiện SHA-256 hash cũ với đường nâng cấp tự động.
+    * JWT tokens với TTL 7 ngày và vô hiệu hóa khi đổi mật khẩu.
+* **Rate Limiting:** Giới hạn tốc độ theo IP và scope qua `src/utils/rateLimit.js`.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Chất lượng Code:
+* **Cấu trúc module:** Phân tách rõ ràng — controllers xử lý HTTP, utils xử lý business logic, database xử lý persistence.
+* **Bảo mật ưu tiên:** Không lưu mật khẩu plaintext, so sánh timing-safe, quản lý token đúng chuẩn.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### 4. Vấn đề & Giải pháp
+* **Vấn đề:** Thiết kế hệ thống workspace linh hoạt hỗ trợ cả sử dụng cá nhân và nhóm với các mức quyền khác nhau.
+* **Giải pháp:** Triển khai hệ thống kiểm soát truy cập theo vai trò với 4 cấp: `owner > admin > editor > viewer`, kiểm tra quyền chi tiết theo từng thao tác.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+### 5. Bài học rút ra
+* Bắt đầu với database schema rõ ràng giúp tiết kiệm thời gian refactoring sau này.
+* Số iteration PBKDF2 cần cân bằng giữa bảo mật và trải nghiệm — 210K iterations thêm ~200ms mỗi lần login, chấp nhận được.
+* Tổ chức route theo domain (auth, workspace, project...) scale tốt hơn so với tổ chức theo HTTP method.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+### 6. Bước tiếp theo
+* Triển khai các controller còn lại: project, file, license, team, access.
+* Xây dựng module mã hóa cho việc mã hóa file và phân phối script an toàn.
+* Phát triển hệ thống script loader.
 
 

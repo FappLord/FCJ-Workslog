@@ -34,9 +34,9 @@ Below is the organizational structure and professional distribution of the team:
 | **1** | **Vo Tan Phat** | **Leader** | **AI** | General Management & AI Direction |
 | 2 | Duong Nguyen Binh | Member | AI | AI Solutions Implementation |
 | 3 | Nguyen Duc Tri | Member | IA | Information Assurance |
-| 4 | Bui Minh Hien | Member | IA | Information Assurance |
+| 4 | Tran Vinh | Member | IA | Information Assurance |
 | 5 | Nguyen Duy Tung | Member | IA | Information Assurance |
-| 6 | Tran Vinh | Member | IA / Cyber | Cyber Security & Backend |
+| 6 | Bui Minh Hien | Member | IA / Cyber | Cyber Security & Backend |
 
 ---
 

@@ -6,23 +6,23 @@ chapter: false
 pre: " <b> 1.2. </b> "
 ---
 
-### 1. Mục tiêu tuần 2
+### 1. Mục tiêu
 
 * **Kỹ thuật cốt lõi:** Tìm hiểu sâu về các dịch vụ Lưu trữ (S3, EBS) và Cơ sở dữ liệu (RDS) của AWS; thực hành xây dựng hệ thống upload file.
 * **Khởi động dự án:** Hoàn thiện đề xuất cho dự án **"Website Security Baseline Assessment Platform"** – công cụ hỗ trợ đánh giá nhanh rủi ro bảo mật.
 * **Nâng cao kỹ năng:** Củng cố kiến thức NLP thông qua các chứng chỉ Coursera để phục vụ cho khía cạnh AI của dự án thực tập.
 
-### 2. Chi tiết công việc trong tuần (Weekly Tasks Breakdown)
+### 2. Chi tiết công việc trong tuần
 
-| Thứ | Công việc chính | Chi tiết | Trạng thái | Link / Minh chứng |
-|:---:|:---|:---|:---:|:---|
-| **Hai** | **Lưu trữ & CSDL** | - Nghiên cứu **S3** (Buckets, lifecycle policies).<br>- Nghiên cứu **EBS** (Volumes, snapshots) & **RDS** (Cài đặt, quản lý).<br>- *Nguồn: Chương trình học Tuần 2*. | Hoàn thành | [\] |
-| **Ba** | **Thực hành Lab** | - **Xây dựng hệ thống upload file:**<br>&nbsp;+ Cấu hình S3 bucket để lưu trữ.<br>&nbsp;+ Kết nối backend với S3 để xử lý file. | Hoàn thành | [\] |
-| **Tư** | **Đề xuất dự án** | - **Soạn thảo Proposal:** Xác định phạm vi cho "Website Security Baseline Assessment Platform".<br>- **Chốt tính năng:**<br>&nbsp;+ Kiểm tra cơ bản: HTTPS/SSL, Robots.txt.<br>&nbsp;+ Quét lỗ hổng: SQL Injection, XSS, File Uploads.<br>- **Kiến trúc:** Thiết kế core độc lập (chạy Local/VPS/AWS) không phụ thuộc cứng vào hạ tầng cloud. | Hoàn thành | [Link tới File Proposal](https://docs.google.com/document/d/1oSdWCVFiCKTUP9ol8eZyOwYg9J5DhtE1/edit?usp=sharing&ouid=101583017547639870148&rtpof=true&sd=true) |
-| **Năm** | **Chứng chỉ AI/NLP** | - Hoàn thành 2 khóa học DeepLearning.AI trên Coursera:<br>&nbsp;1. NLP with Attention Models.<br>&nbsp;2. NLP with Classification and Vector Spaces. | Hoàn thành | [Link tới Cert 1](https://www.coursera.org/account/accomplishments/verify/177J1KWEAWPH)<br>[Link tới Cert 2](https://www.coursera.org/account/accomplishments/verify/JCCLTKPCI1CV) |
-| **Sáu** | **AWS Specialization** | - Tìm kiếm và lên kế hoạch học "AWS Fundamentals Specialization".<br>- Review tuần và họp nhóm rút kinh nghiệm. | Đang thực hiện | [Link tới khóa AWS Fundamentals Specialization](https://www.coursera.org/programs/fptu-spring-2026-6010y/specializations/aws-fundamentals?source=search) |
+| Thứ | Công việc chính | Chi tiết | Trạng thái |
+|:---:|:---|:---|:---:|
+| **Hai** | **Lưu trữ & CSDL** | - Nghiên cứu **S3** (Buckets, lifecycle policies).<br>- Nghiên cứu **EBS** (Volumes, snapshots) & **RDS** (Cài đặt, quản lý).<br>- *Nguồn: Chương trình học Tuần 2*. | Hoàn thành |
+| **Ba** | **Thực hành Lab** | - **Xây dựng hệ thống upload file:**<br>&nbsp;+ Cấu hình S3 bucket để lưu trữ.<br>&nbsp;+ Kết nối backend với S3 để xử lý file. | Hoàn thành |
+| **Tư** | **Đề xuất dự án** | - **Soạn thảo Proposal:** Xác định phạm vi cho "Website Security Baseline Assessment Platform".<br>- **Chốt tính năng:**<br>&nbsp;+ Kiểm tra cơ bản: HTTPS/SSL, Robots.txt.<br>&nbsp;+ Quét lỗ hổng: SQL Injection, XSS, File Uploads.<br>- **Kiến trúc:** Thiết kế core độc lập (chạy Local/VPS/AWS) không phụ thuộc cứng vào hạ tầng cloud.<br>- [Link tới File Proposal](https://docs.google.com/document/d/1oSdWCVFiCKTUP9ol8eZyOwYg9J5DhtE1/edit?usp=sharing&ouid=101583017547639870148&rtpof=true&sd=true) | Hoàn thành |
+| **Năm** | **Chứng chỉ AI/NLP** | - Hoàn thành 2 khóa học DeepLearning.AI trên Coursera:<br>&nbsp;1. NLP with Attention Models.<br>&nbsp;2. NLP with Classification and Vector Spaces.<br>- [Cert 1](https://www.coursera.org/account/accomplishments/verify/177J1KWEAWPH) · [Cert 2](https://www.coursera.org/account/accomplishments/verify/JCCLTKPCI1CV) | Hoàn thành |
+| **Sáu** | **AWS Specialization** | - Tìm kiếm và lên kế hoạch học "AWS Fundamentals Specialization".<br>- Review tuần và họp nhóm rút kinh nghiệm.<br>- [AWS Fundamentals Specialization](https://www.coursera.org/programs/fptu-spring-2026-6010y/specializations/aws-fundamentals?source=search) | Đang thực hiện |
 
-### 3. Kết quả chính (Key Results)
+### 3. Kết quả đạt được
 
 #### Kỹ thuật & Thực hành:
 * **Thành thạo Lưu trữ:** Đã hiểu và quản lý được S3 Lifecycles và EBS Snapshots.
@@ -38,6 +38,6 @@ pre: " <b> 1.2. </b> "
     * *Natural Language Processing with Attention Models*
     * *Natural Language Processing with Classification and Vector Spaces*
 
-### 4. Vấn đề & Giải pháp (Issues & Solutions)
+### 4. Vấn đề & Giải pháp
 * **Vấn đề:** Khó khăn trong việc xác định phạm vi pháp lý khi quét các website bên ngoài.
 * **Giải pháp:** Đã làm rõ trong proposal - Tuân thủ nguyên tắc "Chỉ thực hiện khi có sự đồng ý bằng văn bản".

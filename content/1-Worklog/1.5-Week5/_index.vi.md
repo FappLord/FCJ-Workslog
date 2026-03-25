@@ -1,59 +1,49 @@
 ---
-title: "Worklog Tuần 5"
-date: 2026-02-06
+title: "Tuần 5: Tìm hiểu Serverless & Hình thành ý tưởng dự án"
+date: 2026-02-02
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### 1. Mục tiêu
 
-### Mục tiêu tuần 5:
+* **Nắm vững Serverless:** Tìm hiểu chuyên sâu về AWS Lambda, API Gateway và DynamoDB — các thành phần cốt lõi của kiến trúc serverless.
+* **Tiến độ chứng chỉ:** Tiếp tục khóa AWS Fundamentals Specialization trên Coursera.
+* **Ý tưởng dự án:** Brainstorm và đánh giá các ý tưởng dự án với Team TheBois cho project thực tập FCJ.
+* **Tổng kết trước Tết:** Hệ thống lại kiến thức Tuần 1–4 trước kỳ nghỉ Tết Nguyên đán.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### 2. Chi tiết công việc trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc chính | Chi tiết | Trạng thái |
+|:---:|:---|:---|:---:|
+| **Hai** | **Lambda Deep Dive** | - Nghiên cứu mô hình thực thi Lambda, cold start và pricing.<br>- Tìm hiểu Lambda Function URL như endpoint API gọn nhẹ.<br>- Thực hành tạo Lambda function với Node.js runtime. | Hoàn thành |
+| **Ba** | **API Gateway & DynamoDB** | - So sánh API Gateway REST vs HTTP API.<br>- Nghiên cứu sâu DynamoDB: partition key, sort key, GSI, query patterns.<br>- Tìm hiểu chế độ PAY_PER_REQUEST của DynamoDB. | Hoàn thành |
+| **Tư** | **Thực hành Lab** | - Xây dựng serverless REST API đơn giản:<br>&nbsp;+ Lambda function xử lý CRUD.<br>&nbsp;+ DynamoDB table lưu dữ liệu.<br>&nbsp;+ Test qua Lambda Function URL. | Hoàn thành |
+| **Năm** | **Brainstorm Dự án** | - Họp Team TheBois thảo luận hướng dự án.<br>- Đánh giá các ý tưởng: phân phối mã nguồn an toàn, quản lý license, cloud-based code editor.<br>- Hình thành ý tưởng ban đầu cho **GuardScript** — nền tảng phân phối và bảo vệ mã nguồn với hệ thống licensing. | Hoàn thành |
+| **Sáu** | **Tổng kết trước Tết** | - Hệ thống lại ghi chú từ Tuần 1–5.<br>- Tiếp tục AWS Fundamentals Specialization (Coursera).<br>- Chuẩn bị task backlog cho sau Tết.<br>- *Lưu ý: Tuần sau bắt đầu nghỉ Tết (2 tuần).* | Hoàn thành |
 
+### 3. Kết quả đạt được
 
-### Kết quả đạt được tuần 5:
+#### Kỹ thuật:
+* **Kiến thức Serverless:** Hiểu rõ thực tiễn bộ ba Lambda + API Gateway + DynamoDB, tạo nền tảng cho việc triển khai GuardScript lên AWS sau này.
+* **Thực hành:** Xây dựng và test thành công serverless CRUD API, xác minh tính khả thi của kiến trúc backend dựa trên Lambda.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Dự án (Team TheBois):
+* **Xác định ý tưởng:** Hình thành ý tưởng cốt lõi cho **GuardScript** — nền tảng phân phối mã nguồn bảo mật, giải quyết vấn đề tái phân phối code trái phép.
+* **Danh sách tính năng ban đầu:** Phân phối script được mã hóa, quản lý license, khóa phần cứng (HWID), cách ly theo workspace, kiểm soát truy cập.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### 4. Vấn đề & Giải pháp
+* **Vấn đề:** DynamoDB yêu cầu thiết kế partition key và GSI cẩn thận ngay từ đầu, không linh hoạt như SQL.
+* **Giải pháp:** Nghiên cứu Single-Table Design vs Multi-Table Design. Quyết định dùng multi-table với GSI có mục tiêu rõ ràng cho GuardScript.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+### 5. Bài học rút ra
+* Kiến trúc serverless đòi hỏi tư duy khác so với thiết kế server truyền thống — statelessness, cold start và pricing pay-per-use đều ảnh hưởng đến quyết định kiến trúc.
+* Thiết kế schema DynamoDB phải hướng theo query, không phải hướng theo entity.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+### 6. Bước tiếp theo
+* Nghỉ Tết Nguyên đán (2 tuần).
+* Quay lại với scope dự án GuardScript đã được chốt.
+* Bắt đầu thiết kế kiến trúc và lập kế hoạch phát triển.
 
 

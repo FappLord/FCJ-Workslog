@@ -14,13 +14,13 @@ pre: " <b> 1.4. </b> "
 
 ### 2. Weekly Tasks Breakdown
 
-| Day | Main Task | Details | Status | Evidence |
-|:---:|:---|:---|:---:|:---|
-| **Mon** | **IAM Core Concepts** | - **Users & Groups:** Created individual IAM users for team TheBois (Binh, Tri, Hien, Tung, Vinh).<br>- **Groups:** Organized users into functional groups (Dev, Admin, Audit) to manage permissions efficiently. | Completed | \ |
-| **Tue** | **AWS Event** | - **Event:** Attended "AWS re:Invent 2025 Recap" (Jan 27, 2026).<br>- **Summary:** Updates on GenAI (Bedrock Agents), SageMaker Unified Studio, and S3 optimizations.<br>*(See detailed Event Participated for more info)* | Completed | \ |
-| **Wed** | **Policies & Security** | - **Permissions:** Crafted JSON Policies (Least Privilege) restricting access to specific S3 buckets and EC2 instances.<br>- **Security Hardening:** Enforced **MFA (Multi-Factor Authentication)** for the Root account and all IAM users. | Completed | \ |
-| **Thu** | **Tech Evaluation** | - Analyzed **S3 Vector** and **S3 Tables** for cost-effective log storage and retrieval in the Security Platform project.<br>- Explored **Bedrock Agents** capabilities for automating security scan workflows. | Completed | \ |
-| **Fri** | **AWS Specialization** | - Continued progress on **AWS Fundamentals Specialization** (Coursera).<br>- Reviewed security best practices learned in Week 3 (VPC) vs Week 4 (IAM). | In Progress | \ |
+| Day | Main Task | Details | Status |
+|:---:|:---|:---|:---:|
+| **Mon** | **IAM Core Concepts** | - **Users & Groups:** Created individual IAM users for team TheBois (Binh, Tri, Hien, Tung, Vinh).<br>- **Groups:** Organized users into functional groups (Dev, Admin, Audit) to manage permissions efficiently. | Completed |
+| **Tue** | **AWS Event** | - **Event:** Attended "AWS re:Invent 2025 Recap" (Jan 27, 2026).<br>- **Summary:** Updates on GenAI (Bedrock Agents), SageMaker Unified Studio, and S3 optimizations.<br>*(See detailed Event Participated for more info)* | Completed |
+| **Wed** | **Policies & Security** | - **Permissions:** Crafted JSON Policies (Least Privilege) restricting access to specific S3 buckets and EC2 instances.<br>- **Security Hardening:** Enforced **MFA (Multi-Factor Authentication)** for the Root account and all IAM users. | Completed |
+| **Thu** | **Tech Evaluation** | - Analyzed **S3 Vector** and **S3 Tables** for cost-effective log storage and retrieval in the Security Platform project.<br>- Explored **Bedrock Agents** capabilities for automating security scan workflows. | Completed |
+| **Fri** | **AWS Specialization** | - Continued progress on **AWS Fundamentals Specialization** (Coursera).<br>- Reviewed security best practices learned in Week 3 (VPC) vs Week 4 (IAM). | In Progress |
 
 ### 3. Key Results (Deliverables)
 

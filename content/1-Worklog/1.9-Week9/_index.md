@@ -1,57 +1,68 @@
 ---
-title: "Week 9 Worklog"
-date: 2026-03-06
+title: "Week 9: GuardScript — AWS Migration & Frontend Design"
+date: 2026-03-16
 weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### 1. Objectives
 
-### Week 9 Objectives:
+* **AWS Migration:** Begin migrating GuardScript from the local prototype (Express.js + SQLite) to a fully serverless AWS architecture.
+* **Infrastructure as Code:** Set up the SAM/CloudFormation template defining Lambda, DynamoDB, S3, and CloudFront resources.
+* **Frontend Design:** Design and build the frontend pages for the GuardScript web application (landing page, authentication pages).
+* **Team Coordination:** Coordinate task distribution across Team TheBois for the migration effort.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### 2. Weekly Tasks Breakdown
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Main Task | Details | Status |
+|:---:|:---|:---|:---:|
+| **Mon** | **Migration Planning** | - Reviewed the local prototype with the team and outlined the AWS migration plan.<br>- Identified AWS services needed: Lambda (compute), DynamoDB (database), S3 (storage + hosting), CloudFront (CDN).<br>- Distributed tasks: frontend (my responsibility), backend migration (team members), infrastructure setup (collaborative). | Completed |
+| **Tue** | **Landing Page Design** | - Designed and built the GuardScript landing page (`frontend/index.html`, `style.css`, `script.client.js`).<br>- Created hero section with animated binary canvas background.<br>- Designed feature cards section showcasing 6 core features: licensing, cloud loader, workspace isolation, analytics, kill switch, access policies.<br>- Added workflow steps section and responsive navigation bar. | Completed |
+| **Wed** | **Auth Pages Design** | - Designed and built login page (`frontend/login/`) with matrix background animation, email/password form, and benefits list.<br>- Designed and built registration page (`frontend/register/`) with matching visual style.<br>- Implemented auth-aware navigation (show/hide login/register/dashboard links based on session). | Completed |
+| **Thu** | **SAM Template & S3 Setup** | - Reviewed and contributed to the SAM template (`infra/template.yaml`).<br>- Helped configure S3 bucket for frontend hosting with versioning and AES256 encryption.<br>- Set up CloudFront distribution with Origin Access Control (OAC) for secure S3 access.<br>- Configured CloudFront behaviors for SPA routing (rewrite subpaths to `index.html`). | Completed |
+| **Fri** | **Team Sync & DynamoDB Review** | - Conducted team progress review — backend migration to DynamoDB on track.<br>- Reviewed DynamoDB schema design: 12 tables with Global Secondary Indexes (GSIs).<br>- Planned dashboard page layout and workspace IDE page structure for next week.<br>- Updated project timeline and task board. | Completed |
 
+### 3. Key Results (Deliverables)
 
-### Week 9 Achievements:
+#### Frontend (Personal Contribution):
+* **Landing Page:** Fully designed and implemented with:
+    * Animated binary canvas hero section.
+    * 6 feature cards with icons and descriptions.
+    * Workflow visualization (3-step process).
+    * Responsive navigation with auth-awareness.
+    * Clean, professional dark theme visual identity.
+* **Authentication Pages:** Login and registration pages with:
+    * Matrix background animation effect.
+    * Form validation and error handling.
+    * Consistent visual language across pages.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Infrastructure (Team Effort):
+* **SAM Template:** CloudFormation template defining all AWS resources:
+    * `ApiFunction` — Lambda function (Node.js 20.x) with Function URL.
+    * `FrontendBucket` — S3 bucket for static frontend hosting.
+    * `ContentBucket` — S3 bucket for encrypted project file storage.
+    * `Distribution` — CloudFront CDN with OAC and SPA rewriting.
+    * 12 DynamoDB tables with GSIs for query optimization.
+    * CloudWatch alarms (errors, throttles, p95 latency) and dashboard.
+* **DynamoDB Migration:** Data layer ported from SQLite to DynamoDB using `DynamoDBDocumentClient`.
 
-* Successfully created and configured an AWS Free Tier account.
+#### Team Management (Personal Contribution):
+* Task distribution finalized — clear ownership for frontend, backend, and infrastructure.
+* Progress tracking updated — team aligned on weekly deliverables.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+### 4. Issues & Solutions
+* **Issue:** CloudFront SPA routing — single-page application subpaths (e.g., `/workspace/123`) returned 403 errors because no corresponding S3 object existed.
+* **Solution:** Configured CloudFront Functions to rewrite request URIs for known subpaths (`/dashboard/*`, `/workspace/*`, `/login/*`, `/register/*`) to their respective `index.html` files.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+### 5. Lessons Learned
+* CloudFront Origin Access Control (OAC) replaces the legacy Origin Access Identity (OAI) for improved security when serving S3 content.
+* SAM templates significantly reduce deployment complexity — a single `sam deploy` replaces dozens of manual console steps.
+* Designing the frontend visual identity early creates a consistent user experience across all pages.
+* Clear task distribution with documented ownership prevents duplication and keeps the team moving in parallel.
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+### 6. Next Steps
+* Implement the dashboard page with stats, workspace grid, and navigation.
+* Build the workspace IDE page with file explorer, editor, and project settings.
+* Complete backend migration testing on AWS.
+* Begin end-to-end integration testing.

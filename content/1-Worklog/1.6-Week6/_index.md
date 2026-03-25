@@ -1,57 +1,55 @@
 ---
-title: "Week 6 Worklog"
-date: 2026-02-13
+title: "Week 6: Post-Tet Sync & GuardScript Project Design"
+date: 2026-02-23
 weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### 1. Objectives
 
-### Week 6 Objectives:
+* **Team Sync:** Reconnect with Team TheBois after the Tet holiday; review progress and align on project direction.
+* **Project Finalization:** Formally adopt **GuardScript** as the main FCJ internship project and define its scope.
+* **Architecture Design:** Design the high-level system architecture, database schema, and API structure.
+* **Research:** Study encryption techniques (AES-GCM, ECDH) and code protection strategies relevant to the project.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### 2. Weekly Tasks Breakdown
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Main Task | Details | Status |
+|:---:|:---|:---|:---:|
+| **Mon** | **Team Sync** | - Reconnected with Team TheBois after 2-week Tet break.<br>- Reviewed project ideas from Week 5.<br>- Formally selected **GuardScript** as the primary project. | Completed |
+| **Tue** | **Scope Definition** | - Defined core features:<br>&nbsp;+ Workspace-based project management<br>&nbsp;+ Encrypted script distribution (Python, Node.js)<br>&nbsp;+ License key management with HWID locking<br>&nbsp;+ Role-based team collaboration<br>&nbsp;+ Access control (IP whitelist/blacklist) | Completed |
+| **Wed** | **Architecture Design** | - Designed backend structure: Express.js + SQLite for the initial prototype.<br>- Planned modular controller pattern (auth, project, file, license, workspace, team, access controllers).<br>- Sketched API route structure (~70 endpoints). | Completed |
+| **Thu** | **Crypto Research** | - Researched AES-256-GCM for file content encryption.<br>- Studied ECDH (X25519) key exchange for secure loader handshake.<br>- Evaluated PBKDF2 (210K iterations) for password hashing vs bcrypt. | Completed |
+| **Fri** | **Development Setup** | - Initialized Node.js project with Express framework.<br>- Set up project repository structure.<br>- Created initial `package.json` with dependencies.<br>- Configured development environment and tooling. | Completed |
 
+### 3. Key Results (Deliverables)
 
-### Week 6 Achievements:
+#### Technical:
+* **Architecture Plan:** Designed a modular monolith backend with clear separation:
+    * **Controllers:** 10 domain-specific controllers handling different aspects of the platform.
+    * **Utils:** Reusable crypto, auth, rate-limiting, and response modules.
+    * **Storage:** File system-based storage with encryption at rest.
+* **Security Design:** Selected industry-standard cryptographic approaches:
+    * AES-256-GCM for file content encryption.
+    * ECDH key exchange for loader handshake.
+    * PBKDF2-SHA256 (210K iterations) for password storage.
+    * JWT (HMAC-SHA256) for authentication tokens.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Project (Team TheBois):
+* **Scope Locked:** Team agreed on GuardScript scope — focusing on the core problem of unauthorized code redistribution.
+* **Architecture Aligned:** All team members understand the planned system architecture.
 
-* Successfully created and configured an AWS Free Tier account.
+### 4. Issues & Solutions
+* **Issue:** Choosing between SQLite (simple, file-based) vs PostgreSQL (robust, networked) for the initial prototype.
+* **Solution:** Selected SQLite for the prototype phase due to zero-config setup and portability. Planned migration to DynamoDB for the AWS deployment phase.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+### 5. Lessons Learned
+* Defining clear project scope early prevents feature creep.
+* Modular controller patterns make it easier to parallelize development across team members.
+* Selecting the right cryptographic primitives upfront is critical for security-sensitive applications.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+### 6. Next Steps
+* Begin hands-on development of the GuardScript backend.
+* Implement core database schema and authentication module.
+* Start building the controller layer for workspace and project management.

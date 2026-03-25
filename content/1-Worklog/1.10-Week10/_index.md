@@ -1,57 +1,75 @@
 ---
-title: "Week 10 Worklog"
-date: 2026-03-13
+title: "Week 10: GuardScript — Frontend Implementation & Integration Testing"
+date: 2026-03-23
 weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### 1. Objectives
 
-### Week 10 Objectives:
+* **Dashboard Frontend:** Implement the main dashboard page with statistics, workspace management, and user settings.
+* **Workspace IDE Frontend:** Build the workspace IDE page with file explorer, code editor integration, and project settings panel.
+* **Responsive Design:** Ensure all pages work across desktop, tablet, and mobile viewports with light/dark theme support.
+* **Integration Testing:** Coordinate end-to-end testing between frontend and the deployed AWS backend.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### 2. Weekly Tasks Breakdown
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Main Task | Details | Status |
+|:---:|:---|:---|:---:|
+| **Mon** | **Dashboard Page** | - Built the dashboard page (`frontend/dashboard/`).<br>- Implemented collapsible sidebar navigation with sections: Overview, Workspaces, Projects, Licenses, Access, Team, Logs, Settings.<br>- Created stats cards (total workspaces, projects, licenses, executions).<br>- Built workspace grid with quick-action buttons (open, settings, delete). | Completed |
+| **Tue** | **Workspace IDE Page** | - Built the workspace IDE page (`frontend/workspace/`).<br>- Implemented 3-panel layout: file explorer (left), code editor area (center), project settings (right).<br>- Created file tree component with folder/file icons and context menu actions.<br>- Added tab bar for managing multiple open files. | Completed |
+| **Wed** | **Theme & Responsive Design** | - Implemented dark/light theme toggle using CSS custom properties.<br>- Added responsive breakpoints for mobile (hamburger menu), tablet (compact sidebar), and desktop (full layout).<br>- Tested all pages across viewport sizes.<br>- Coordinated with team on backend deployment status. | In Progress |
+| **Thu** | **Settings & Team Management UI** | - [PLANNED] Implement user settings panel (profile, password change, account stats).<br>- [PLANNED] Build team management section (invite members, manage roles, view logs).<br>- [PLANNED] Add loader download and ECDH handshake explorer UI to workspace page. | Planned |
+| **Fri** | **Integration Testing & Sync** | - [PLANNED] End-to-end testing: frontend ↔ Lambda API ↔ DynamoDB ↔ S3.<br>- [PLANNED] Fix any CORS or routing issues found in testing.<br>- [PLANNED] Team sync: review deployment status, plan Week 11 tasks.<br>- [PLANNED] Continue work on architecture diagram. | Planned |
 
+### 3. Key Results (Deliverables So Far)
 
-### Week 10 Achievements:
+#### Frontend (Personal Contribution):
+* **Dashboard Page:** Functional with:
+    * Sidebar navigation with collapsible sections and active-state highlighting.
+    * Stats cards displaying workspace, project, license, and execution counts.
+    * Workspace grid with cards showing project details and quick actions.
+    * Settings panel: profile editing, password change, account deletion, account statistics.
+    * Dark/light theme toggle with localStorage persistence.
+* **Workspace IDE Page:** 3-panel layout with:
+    * File explorer with tree navigation, drag-and-drop support, and context menus.
+    * Tab bar for open file management.
+    * Code editor area (Monaco editor integration planned).
+    * Project settings sidebar: licensing config, IP whitelist, HWID settings, max executions, rate limits.
+    * Team management, logs viewer, and access rule panels.
+    * Search & replace functionality panel.
+* **Responsive Design:** All pages adapt across:
+    * Mobile: hamburger menu, stacked layouts.
+    * Tablet: compact sidebar, simplified panels.
+    * Desktop: full 3-panel workspace IDE layout.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+#### Infrastructure (Team Status):
+* Backend Lambda function deployed and functional via Function URL.
+* DynamoDB tables provisioned with GSIs operational.
+* CloudFront distribution serving frontend from S3.
+* CloudWatch monitoring active (alarms configured for errors, throttles, p95 duration).
 
-* Successfully created and configured an AWS Free Tier account.
+#### Team Management (Personal Contribution):
+* Daily check-ins with team members on migration progress.
+* Architecture diagram work in progress — core components mapped, detail layer being finalized.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+### 4. Issues & Solutions
+* **Issue:** Monaco editor bundle size is large (~2MB), increasing initial page load time for the workspace IDE.
+* **Solution:** Planning to lazy-load the editor component only when a file is opened, and explore CDN-hosted Monaco to reduce bundle impact.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* **Issue:** Theme toggle needed to persist user preference across page navigations and sessions.
+* **Solution:** Used `localStorage` to store the selected theme, applying it on page load before render to prevent flash of wrong theme.
 
-* Used AWS CLI to perform basic operations such as:
+### 5. Lessons Learned
+* CSS custom properties (`--var`) make theme switching much simpler than maintaining separate stylesheets — one toggle switches the entire UI.
+* Building the sidebar as a reusable component across dashboard and workspace pages reduces code duplication.
+* 3-panel IDE-style layouts require careful CSS grid/flexbox management to handle dynamic panel resizing.
+* Regular team check-ins during deployment phases catch integration issues early.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+### 6. Next Steps
+* Complete remaining frontend features (team management UI, loader explorer).
+* Finalize end-to-end integration testing.
+* Complete the architecture diagram.
+* Prepare for worklog report finalization and proposal submission.
+* [INFO NEEDED: Specific integration test results and any bugs discovered during E2E testing]
