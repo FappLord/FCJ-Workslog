@@ -1,12 +1,12 @@
 ---
-title: "Sự kiện: AWS re:Invent Recap"
+title: "Sự kiện 1"
 date: 2026-01-27
 weight: 1
 chapter: false
-pre: " <b> 1.4.1. </b> "
+pre: " <b> 4.1. </b> "
 ---
 
-# Báo cáo tổng hợp: “AWS re:Invent 2025 Recap (Vietnam)”
+# AWS re:Invent 2025 Recap (Vietnam)
 
 ### Thông tin sự kiện
 | | |
@@ -88,5 +88,3 @@ Tham dự **“AWS re:Invent 2025 Recap”** tại **Văn phòng AWS Vietnam** l
 #### Kết nối cộng đồng
 - Không khí tại văn phòng AWS (Tầng 26 & 36) rất sôi động, với nhiều builders và developers cùng chia sẻ các bài toán thực tế.
 - Tôi đã có cơ hội thảo luận về dự án của team **"TheBois"** với các chuyên gia trong ngành và nhận được những phản hồi giá trị về kiến trúc đề xuất.
-
-> Nhìn chung, sự kiện không chỉ cập nhật kiến thức kỹ thuật mà còn cung cấp các công cụ cụ thể (Agents, S3 Vector) mà tôi có thể áp dụng ngay vào dự án **Website Security Baseline Assessment Platform**.

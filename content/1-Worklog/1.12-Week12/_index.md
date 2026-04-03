@@ -1,57 +1,42 @@
 ---
-title: "Week 12 Worklog"
+title: "Week 12: GuardScript — Documentation Finalization, Validation & Demo Readiness"
 date: 2026-03-27
 weight: 12
 chapter: false
 pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### 1. Objectives
 
-### Week 12 Objectives:
+* Finalize proposal/worklog alignment with real implementation and FCJ standards.
+* Confirm end-to-end deployment flow and operational validation points.
+* Add cleanup and cost-awareness guidance for workshop/demo execution.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### 2. Weekly Tasks Breakdown
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Main Task | Technical Details | Status |
+|:---:|:---|:---|:---:|
+| **Mon** | **Proposal Normalization** | - Updated architecture, service flow, and security claims against current IaC and source code.<br>- Removed statements without clear implementation evidence. | Completed |
+| **Tue** | **Worklog Normalization** | - Mapped weekly outcomes to concrete modules (auth, loader, license, infra).<br>- Standardized report language with FCJ format. | Completed |
+| **Wed** | **Deployment Review** | - Verified SAM deployment flow.<br>- Verified frontend S3 sync and CloudFront invalidation workflow. | Completed |
+| **Thu** | **Monitoring Baseline Review** | - Confirmed CloudWatch alarms/dashboard resources.<br>- Reviewed log retention and operational outputs. | Completed |
+| **Fri** | **Demo Validation & Cleanup Checklist** | - Finalized validation checklist for demo execution.<br>- Added cleanup guidance to reduce post-demo cloud costs. | Completed |
 
+### 3. Key Results
 
-### Week 12 Achievements:
+* Proposal now reflects implementation-backed claims.
+* Worklog entries now include technical outputs instead of generic statements.
+* End-to-end deployment workflow is clearly documented for reproducibility.
+* Monitoring baseline is documented with concrete alarm/dashboard resources.
+* Cleanup guidance is prepared to reduce leftover resource cost after demos.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+### 4. Issues & Solutions
 
-* Successfully created and configured an AWS Free Tier account.
+* **Issue:** Some previous report sections overclaimed implementation scope.
+* **Solution:** Reworked proposal/worklog using evidence-based claims and explicit follow-up placeholders.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+### 5. Next Steps
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Prepare final demo narrative by FCJ rubric (architecture, implementation, validation, cleanup).
+* Insert selected code snippets into proposal/workshop pages.
+* Continue resolving all proposal placeholders marked as **[INFO NEEDED]**.

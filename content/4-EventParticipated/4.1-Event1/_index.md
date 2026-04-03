@@ -1,12 +1,12 @@
 ---
-title: "Event: AWS re:Invent 2025 Recap"
+title: "Event 1"
 date: 2026-01-27
 weight: 1
 chapter: false
-pre: " <b> 1.4.1. </b> "
+pre: " <b> 4.1. </b> "
 ---
 
-# Summary Report: “AWS re:Invent 2025 Recap (Vietnam)”
+# AWS re:Invent 2025 Recap (Vietnam)
 
 ### Event Details
 | | |
@@ -88,5 +88,3 @@ Attending the **“AWS re:Invent 2025 Recap”** at the **AWS Vietnam Office** w
 #### Community & Networking
 - The atmosphere at the AWS Office (Floor 26 & 36) was energetic, with builders and developers sharing real-world challenges.
 - I had the opportunity to discuss the **"TheBois" team project** with industry experts and received valuable feedback on our proposed architecture.
-
-> Overall, this event not only updated my technical knowledge but also provided concrete tools (Agents, S3 Vector) that I can immediately apply to the **Website Security Baseline Assessment Platform**.

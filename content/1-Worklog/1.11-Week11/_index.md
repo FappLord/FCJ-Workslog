@@ -1,57 +1,41 @@
 ---
-title: "Week 11 Worklog"
+title: "Week 11: GuardScript — Security Hardening & Access Control"
 date: 2026-03-20
 weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### 1. Objectives
 
-### Week 11 Objectives:
+* Finalize security hardening for loader v2/v3 flows on AWS backend.
+* Validate license, HWID, and access-list behavior under workspace scope.
+* Improve runtime observability through logs, metrics, and realtime events.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### 2. Weekly Tasks Breakdown
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Main Task | Technical Details | Status |
+|:---:|:---|:---|:---:|
+| **Mon** | **Loader Protocol v2 Review** | - Verified request signature validation, timestamp window, and nonce checks.<br>- Verified encrypted response and response-signature flow. | Completed |
+| **Tue** | **Loader Protocol v3 Review** | - Validated X25519 handshake flow and AES-GCM encryption path.<br>- Verified response signature integrity checks. | Completed |
+| **Wed** | **License/HWID Hardening** | - Reviewed HWID lock toggle and reset flow.<br>- Checked active/expired license rules and project binding logic. | Completed |
+| **Thu** | **Access Policy & Rate Limiting** | - Verified workspace blacklist/whitelist behavior.<br>- Verified IP/scope-based rate limiting and TTL cleanup behavior. | Completed |
+| **Fri** | **Logging & Realtime Auditability** | - Reviewed workspace log action flow.<br>- Verified event broadcasting for workspace/user/admin channels. | Completed |
 
+### 3. Key Results
 
-### Week 11 Achievements:
+* Loader execute and handshake paths were validated against current security design.
+* License/HWID enforcement and access-list checks are consistently applied in API flows.
+* Rate limiting behavior is enforced via TTL-backed records in DynamoDB.
+* Workspace-level logging and realtime event propagation are stable for dashboard/admin visibility.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+### 4. Issues & Solutions
 
-* Successfully created and configured an AWS Free Tier account.
+* **Issue:** Some legacy report claims were not fully aligned with current implementation state.
+* **Resolution:** Proposal content was normalized to include only repository-verifiable technical claims.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+### 5. Next Steps
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Finalize end-to-end deployment documentation and validation checklist.
+* Consolidate cleanup and cost-awareness practices for demo readiness.
+* Complete bilingual proposal/worklog synchronization before submission.

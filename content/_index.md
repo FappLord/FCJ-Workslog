@@ -12,15 +12,21 @@ chapter: false
 
 &emsp; **Role:** Team Lead - AI Engineer
 
+&emsp; **Phone Number:** 0799224453
+
 &emsp; **Email:** votanphata2.c3hn2022@gmail.com
 
 &emsp; **University:** FPT University
+
+&emsp; **Major:** Artificial Intelligence
+
+&emsp; **Internship Company:** Amazon Web Services Vietnam
 
 &emsp; **Program:** First Cloud AI Journey (FCJ 2026)
 
 &emsp; **Team:** **TheBois**
 
-&emsp; **Internship Period:** From 05/012026
+&emsp; **Internship Period:** From 05/01/2026
 
 ![Avatar](/images/avatar.jpg)
 

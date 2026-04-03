@@ -12,9 +12,15 @@ chapter: false
 
 &emsp; **Vai trò (Role):** Team Lead - AI Engineer
 
+&emsp; **Số Điện Thoại:** 0799224453
+
 &emsp; **Email:** votanphata2.c3hn2022@gmail.com
 
 &emsp; **Trường:** Đại học FPT
+
+&emsp; **Ngành:** Trí Tuệ Nhân Tạo
+
+&emsp; **Công Ty Thực Tập:** Amazon Web Services Vietnam
 
 &emsp; **Chương trình:** First Cloud AI Journey (FCJ 2026)
 

@@ -8,7 +8,7 @@ pre: " <b> 4. </b> "
 
 Trong quá trình thực tập, tôi đã tham gia các sự kiện chuyên môn để cập nhật kiến thức và kết nối với cộng đồng. Dưới đây là danh sách các sự kiện tôi đã tham dự:
 
-### [Sự kiện 1](4.1-Event/) 
+### [Sự kiện 1](4.1-Event1/) 
 &emsp;**Tên sự kiện:** AWS re:Invent 2025 Recap (Vietnam)
 
 &emsp;**Thời gian:** 27/01/2026 
@@ -18,3 +18,12 @@ Trong quá trình thực tập, tôi đã tham gia các sự kiện chuyên môn
 &emsp;**Vai trò:** Người tham dự (Thực tập sinh FCJ Cloud) 
 
 ---
+
+### [Sự kiện 2](4.2-Event2/)
+&emsp;**Tên sự kiện:** AI Agents, Prompt Engineering, and AIoT Projects on AWS  
+
+&emsp;**Thời gian:** 14/03/2026 
+
+&emsp;**Địa điểm:** Văn phòng AWS Vietnam (Tầng 26), TP. Hồ Chí Minh 
+
+&emsp;**Vai trò:** Người tham dự (Thực tập sinh FCJ Cloud)

@@ -1,166 +1,258 @@
 ﻿---
 title: "Bản đề xuất"
-date: 2026-01-01
+date: 2026-03-26
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# GuardScript — Nền tảng Phân phối Mã nguồn An toàn
-## Giải pháp AWS Serverless cho Phân phối Script Mã hóa & Quản lý License
+# GuardScript — Nền tảng bảo vệ mã nguồn
+## Đề xuất dự án
 
-### 1. Tổng quan Dự án
+**Thông tin nhóm thực hiện:**
 
-**GuardScript** là nền tảng cloud-native được xây dựng để giải quyết vấn đề tái phân phối mã nguồn trái phép. Nền tảng cung cấp cho lập trình viên và nhà phân phối phần mềm một cách an toàn để phân phối script (Python, Node.js) đồng thời duy trì toàn quyền kiểm soát ai có thể thực thi code, trên phần cứng nào và trong bao lâu.
+| Họ tên | MSSV | Vai trò |
+|---|---|---|
+| Võ Tấn Phát | SE194484 | Nhóm trưởng |
+| Bùi Minh Hiển | SE190829 | Thành viên |
+| Dương Nguyên Bình | SE194067 | Thành viên |
+| Trần Vinh | SE193927 | Thành viên |
+| Nguyễn Duy Tùng | SE196572 | Thành viên |
+| Nguyễn Đức Trí | SE194091 | Thành viên |
 
-Nền tảng được phát triển bởi **Team TheBois** như dự án chính cho chương trình thực tập FCJ 2026. Toàn bộ hệ thống chạy trên hạ tầng serverless AWS, đảm bảo tự động mở rộng, chi phí vận hành thấp và hiệu quả trả-theo-sử-dụng.
+**AWS Services (đã dùng trong code/infra):** `Lambda` · `DynamoDB` · `S3` · `CloudFront` · `CloudWatch` · `API Gateway WebSocket`
 
-**Vai trò của tôi trong dự án** tập trung vào:
-- Thiết kế và triển khai frontend website (trang chủ, dashboard, workspace IDE, trang đăng nhập/đăng ký).
-- Điều phối nhóm, phân chia công việc và theo dõi tiến độ.
-- Hỗ trợ cơ bản trong thiết lập hạ tầng và kiểm thử.
+---
 
-### 2. Mục tiêu
+### 1. Tóm tắt điều hành
 
-1. **Phân phối an toàn:** Cho phép lập trình viên phân phối script đã mã hóa chỉ có thể thực thi bởi người dùng được ủy quyền với license hợp lệ.
-2. **Quản lý License:** Cung cấp vòng đời license hoàn chỉnh — tạo, tạo hàng loạt, khóa HWID, hết hạn và thu hồi (kill switch).
-3. **Cách ly Workspace:** Cho phép nhiều workspace độc lập với project, thành viên, khóa mã hóa và quy tắc truy cập riêng biệt.
-4. **Cộng tác nhóm:** Hỗ trợ cộng tác theo vai trò (owner, admin, editor, viewer) với onboarding qua lời mời.
-5. **Triển khai Cloud-Native:** Chạy toàn bộ nền tảng trên dịch vụ serverless AWS để tiết kiệm chi phí và tự động mở rộng.
-6. **Frontend chuyên nghiệp:** Cung cấp giao diện web responsive, đẹp mắt để quản lý tất cả tính năng.
+**GuardScript** là nền tảng phân phối script đa ngôn ngữ theo cơ chế loader có kiểm soát truy cập. Người dùng cuối không nhận source code theo cách phát hành truyền thống, mà lấy script qua endpoint có xác thực chữ ký, kiểm tra thời gian yêu cầu, license, HWID và access policy.
 
-### 3. Tuyên bố Vấn đề
+Hệ thống được triển khai theo kiến trúc serverless trên AWS nhằm giảm chi phí vận hành, dễ mở rộng, và phù hợp với mục tiêu workshop cloud của FCJ.
 
-#### Vấn đề
-Các lập trình viên độc lập, studio nhỏ và giảng viên phân phối script (công cụ tự động, plugin, tài liệu đào tạo) đối mặt với thách thức chung: **một khi code được chia sẻ, nó có thể bị sao chép và tái phân phối tự do** mà không có sự đồng ý của tác giả. Các giải pháp hiện tại hoặc:
-- Quá đắt (nền tảng DRM doanh nghiệp).
-- Quá phức tạp (server licensing tùy chỉnh cần hạ tầng riêng).
-- Chỉ hỗ trợ ngôn ngữ cụ thể (chỉ hoạt động với ngôn ngữ biên dịch, không phải ngôn ngữ thông dịch như Python hay JavaScript).
+---
 
-Không có giải pháp cloud-native nhẹ nào cung cấp:
-- Phân phối script mã hóa cho ngôn ngữ thông dịch.
-- Licensing khóa phần cứng.
-- Kiểm soát truy cập và analytics theo từng project.
-- Giao diện web đơn giản để quản lý mọi thứ.
+### 2. Tuyên bố vấn đề
 
-#### Tác động
-Không có bảo vệ code, tác giả script mất doanh thu, không có cách thực thi điều khoản sử dụng và không thể theo dõi cách code của họ được sử dụng. Điều này gây nản lòng việc chia sẻ công cụ và nội dung giáo dục giá trị.
+#### Vấn đề hiện tại
 
-### 4. Giải pháp Đề xuất
+Trong thực tế phát triển script, nhóm gặp ba vấn đề chính:
 
-GuardScript giải quyết vấn đề bằng **pipeline phân phối mã hóa end-to-end**:
+1. Source code dễ bị sao chép và tái phân phối trái phép.
+2. Thiếu cơ chế ràng buộc license theo phần cứng và thu hồi truy cập theo thời gian thực.
+3. Thiếu quan sát vận hành để phát hiện lạm dụng API hoặc lỗi hệ thống.
 
-1. **Upload:** Tác giả upload script (file đơn hoặc multi-file project) qua web dashboard.
-2. **Mã hóa:** Script được nén (gzip) và mã hóa at-rest bằng AES-256-GCM với khóa mã hóa workspace-level.
-3. **License:** Tác giả tạo license key (đơn hoặc hàng loạt) với tùy chọn khóa HWID, ngày hết hạn và ràng buộc theo project.
-4. **Phân phối:** End-user nhận script loader nhẹ (Python hoặc Node.js) đã cấu hình license key.
-5. **Thực thi:** Loader thực hiện ECDH key exchange với server, nhận script đã mã hóa, giải mã phía client và thực thi trong sandbox.
-6. **Kiểm soát:** Tác giả theo dõi thực thi, thu hồi license, chặn IP và bật/tắt project — tất cả từ dashboard.
+#### Giải pháp
 
-**Tính năng chính:**
-- **Cách ly workspace** — mỗi workspace có khóa mã hóa, project, team và quy tắc truy cập riêng.
-- **Loader đa ngôn ngữ** — Python và Node.js loader với ECDH handshake, giải mã AES, và HWID fingerprinting.
-- **Cộng tác theo vai trò** — hệ thống phân cấp owner > admin > editor > viewer với invitation system.
-- **IP whitelist/blacklist** — quy tắc truy cập theo workspace.
-- **Analytics thực thi** — số lần sử dụng, thời gian sử dụng cuối, logging vị trí.
-- **Kill switch** — vô hiệu hóa tức thì bất kỳ project hoặc license nào.
+Hệ thống đề xuất giải quyết bằng:
 
-### 5. Tổng quan Kiến trúc
+1. Luồng phân phối script qua loader thay vì phát hành source trực tiếp.
+2. Hai giao thức tải code: v2 (XOR + HMAC verification) và v3 (X25519 ECDH + AES-GCM).
+3. License management với HWID lock/reset, access list blacklist/whitelist.
+4. Monitoring dựa trên CloudWatch alarms/dashboard và logging nghiệp vụ.
 
-Nền tảng sử dụng kiến trúc AWS serverless hoàn toàn. Tất cả dịch vụ compute, storage và database được quản lý bởi AWS, loại bỏ nhu cầu provisioning hoặc bảo trì server.
+#### Lợi ích và ROI
 
-> **Lưu ý:** Sơ đồ kiến trúc chi tiết đang trong quá trình hoàn thiện. Mô tả dưới đây phản ánh hạ tầng thực tế đã triển khai như được định nghĩa trong SAM template (`infra/template.yaml`).
+1. Tăng kiểm soát truy cập script theo license và thiết bị.
+2. Giảm rủi ro lạm dụng endpoint nhờ chữ ký request, timestamp/nonce, rate-limit.
+3. Duy trì chi phí phù hợp môi trường demo/sinh viên với kiến trúc pay-per-use.
 
-**Kiến trúc tổng quan:**
+---
 
+### 3. Kiến trúc giải pháp
+
+Hệ thống triển khai theo mô hình serverless với hai lớp chính: phân phối frontend qua edge và xử lý API trên Lambda.
+
+**Luồng request tiêu biểu:**
 ```
-[End User / Loader] ──HTTPS──▶ [Lambda Function URL]
-                                       │
-                               ┌───────┴────────┐
-                               │  API Router     │
-                               │  (Express.js)   │
-                               └───────┬────────┘
-                          ┌────────────┼────────────┐
-                          ▼            ▼            ▼
-                    [DynamoDB]    [S3 Content]  [CloudWatch]
-                    12 tables     Encrypted      Alarms &
-                    + GSIs        files           Dashboard
-
-[Browser] ──HTTPS──▶ [CloudFront CDN] ──▶ [S3 Frontend Bucket]
-                      OAC + SPA rewrite    Static HTML/CSS/JS
+Client (browser / loader)
+  → CloudFront Distribution (SSL termination, cache layer)
+    → Static assets: S3 bucket (frontend)
+    → API /api/*, /files/*: Lambda Function URL origin
+      → DynamoDB (users, workspaces, projects, licenses, logs, rate_limits, ...)
+      → S3 (nội dung script/object)
+  → API Gateway WebSocket (real-time)
+  → CloudWatch Logs / Alarms / Dashboard
 ```
+![Kiến trúc hệ thống IrisAuth](/images/2-Proposal/architecture.jpg)
 
-**Luồng dữ liệu — Thực thi Script:**
-1. Loader gửi license key + HWID đến `/api/v5/handshake`.
-2. Server xác thực license, HWID, quy tắc IP và rate limits.
-3. Server tạo cặp khóa X25519 tạm thời, dẫn xuất shared secret qua ECDH.
-4. Server mã hóa nội dung script bằng AES-256-GCM sử dụng khóa dẫn xuất.
-5. Server trả về payload đã mã hóa + public key server + chữ ký HMAC.
-6. Loader dẫn xuất shared secret tương ứng, xác thực HMAC, giải mã script và thực thi.
+#### Dịch vụ AWS sử dụng
 
-### 6. Dịch vụ AWS Sử dụng
+| Tầng | Dịch vụ | Chi tiết |
+|---|---|---|
+| Runtime API | AWS Lambda (Node.js 20.x) | API backend dạng modular monolith |
+| Database | Amazon DynamoDB | Multi-table, PAY_PER_REQUEST, có TTL cho dữ liệu tạm |
+| Object Storage | Amazon S3 | Lưu frontend và content/script object |
+| CDN & Edge | Amazon CloudFront | Route static + cache + behavior cho /api/* và /files/* |
+| Monitoring | Amazon CloudWatch | Alarms cho errors/throttles/p95, dashboard vận hành |
+| Real-time | API Gateway WebSocket API | Đồng bộ sự kiện workspace/user/admin |
+| CI/CD | GitHub Actions + SAM | Deploy hạ tầng và đồng bộ frontend |
 
-| Dịch vụ | Mục đích | Lý do chọn |
-|:---|:---|:---|
-| **AWS Lambda** | Hàm đơn xử lý tất cả API routes (Node.js 20.x) qua Function URL | Không cần quản lý server, tự động mở rộng, trả theo lần gọi. Lý tưởng cho workload biến động. |
-| **Amazon DynamoDB** | Database chính — 12 tables với Global Secondary Indexes | NoSQL serverless với độ trễ mili giây đơn. GSIs cho phép query linh hoạt không cần schema migration. |
-| **Amazon S3** (2 buckets) | Frontend static hosting + lưu trữ file project đã mã hóa | Object storage bền vững, tiết kiệm. Versioning cho rollback frontend. AES256 server-side encryption. |
-| **Amazon CloudFront** | CDN phân phối frontend với OAC và SPA routing | Edge distribution toàn cầu, HTTPS termination, tùy chỉnh error pages, path-based rewriting cho SPA. |
-| **AWS SAM / CloudFormation** | Infrastructure as Code — định nghĩa tất cả tài nguyên trong một template | Triển khai lặp lại được, hạ tầng version-controlled, tự động giải quyết dependency. |
-| **AWS IAM** | Service roles và permission policies | Quyền truy cập least-privilege cho Lambda đến DynamoDB và S3. |
-| **Amazon CloudWatch** | Monitoring: logs, alarms (errors, throttles, p95 latency), dashboard | Observability tập trung. Alarms kích hoạt khi có spike lỗi hoặc suy giảm hiệu năng. |
+#### Thiết kế thành phần
 
-### 7. Lộ trình
+1. **Client Layer**: dashboard web và loader clients (Python/Node/Lua).
+2. **Edge Layer**: CloudFront phân tuyến static và API/files.
+3. **Compute Layer**: Lambda xử lý auth, workspace, project, license, loader protocols.
+4. **Data Layer**: DynamoDB + S3.
+5. **Observability Layer**: CloudWatch logs/alarms/dashboard và bảng logs nghiệp vụ.
 
-| Giai đoạn | Thời gian | Hoạt động |
-|:---|:---|:---|
-| **Tuần 1–5** (05/01 – 06/02) | Học AWS & Lên ý tưởng | AWS cơ bản (EC2, S3, VPC, IAM, Lambda, DynamoDB), brainstorm dự án, thiết lập team, chứng chỉ. |
-| **Nghỉ Tết** (07/02 – 22/02) | Nghỉ lễ | — |
-| **Tuần 6** (23/02) | Thiết kế dự án | Đồng bộ sau Tết, xác định scope GuardScript, thiết kế kiến trúc, nghiên cứu crypto. |
-| **Tuần 7–8** (02/03 – 14/03) | Prototype Local | Phát triển backend (Express.js + SQLite), auth, controllers, module crypto, loaders, hệ thống license. |
-| **Tuần 9** (16/03) | Migration AWS | SAM template, migration DynamoDB, setup S3, thiết kế frontend landing & auth pages. |
-| **Tuần 10** (23/03) | Frontend & Testing | Dashboard, workspace IDE, responsive design, integration testing. |
-| **Tuần 11–12** (30/03 – 11/04) | Hoàn thiện & Bàn giao | Final testing, sửa bug, documentation, hoàn thiện sơ đồ kiến trúc, chuẩn bị báo cáo. |
+---
 
-### 8. Ước tính Ngân sách / Chi phí
+### 4. Triển khai kỹ thuật
 
-| Hạng mục | Chi phí |
-|:---|:---|
-| AWS Lambda | Miễn phí (free tier / credits) |
-| Amazon DynamoDB | Miễn phí (free tier / credits) |
-| Amazon S3 | Miễn phí (free tier / credits) |
-| Amazon CloudFront | Miễn phí (free tier / credits) |
-| CloudWatch | Miễn phí (free tier / credits) |
-| **Tổng chi phí ước tính** | **0 USD** |
+#### 4.1. Hệ thống xác thực
 
-> **Lưu ý:** Toàn bộ chi phí hạ tầng được bao phủ bởi **AWS promotional credits (200 USD)**. Dự án được thiết kế để hoạt động tốt trong giới hạn free tier cho phát triển và sử dụng production lưu lượng thấp. Không cần chi phí phần cứng hoặc dịch vụ bên thứ ba.
+Token được tự implement theo cấu trúc `v2.<payload_base64url>.<signature_base64url>`:
 
-### 9. Đánh giá Rủi ro
+1. Token ký bằng HMAC-SHA256 với secret lưu trong bảng app config.
+2. Password hash dùng PBKDF2-SHA256 (210000 iterations).
+3. So sánh chữ ký bằng timing-safe compare.
+4. PIN workspace có session token riêng với TTL.
 
-| Rủi ro | Tác động | Xác suất | Giảm thiểu |
-|:---|:---:|:---:|:---|
-| **Hết credit** | Trung bình | Thấp | Theo dõi sử dụng với AWS Budgets và Cost Explorer. Kiến trúc dùng dịch vụ serverless trả-theo-sử-dụng, giữ chi phí tối thiểu. |
-| **DynamoDB throttling** | Trung bình | Thấp | On-demand capacity mode tự động xử lý traffic spikes. GSIs được thiết kế phân bố query đều trên partitions. |
-| **Loader bị reverse engineer** | Trung bình | Trung bình | ECDH key exchange đảm bảo mỗi session dùng khóa mã hóa duy nhất. Nội dung script không bao giờ cache dạng plaintext. Obfuscation loader thêm một lớp bảo vệ. |
-| **Rò rỉ key/credential** | Cao | Thấp | Không lưu secrets trong code. Biến môi trường inject qua SAM template. JWT tokens có TTL 7 ngày với vô hiệu hóa khi đổi mật khẩu. |
-| **CloudFront cache cũ** | Thấp | Trung bình | Cache invalidation khi deploy. Versioned S3 objects cho frontend assets. |
-| **Chậm trễ điều phối nhóm** | Trung bình | Trung bình | Sync hàng tuần, tài liệu phân chia task rõ ràng, check-in hàng ngày trong giai đoạn quan trọng. |
+#### 4.2. Hai protocol phân phối code
 
-### 10. Hướng Cải tiến Tương lai
+**Protocol v2 — GET /api/v5/execute (XOR)**
 
-1. **Loader thêm ngôn ngữ:** Mở rộng hỗ trợ Lua, Ruby hoặc ngôn ngữ thông dịch khác.
-2. **Dashboard Analytics:** Trực quan hóa execution patterns, phân bố địa lý, tận dụng license qua biểu đồ.
-3. **Webhook Notifications:** Thông báo tác giả khi license được kích hoạt, hết hạn, hoặc phát hiện hoạt động đáng ngờ.
-4. **Custom Domain:** Cho phép tác giả phân phối loader từ domain thương hiệu riêng.
-5. **CI/CD Pipeline:** Tự động hóa triển khai với GitHub Actions cho continuous delivery.
-6. **Tích hợp Monaco Editor:** Nhúng code editor đầy đủ (Monaco) vào workspace IDE cho chỉnh sửa trên trình duyệt.
-7. **Xác thực hai yếu tố:** Thêm 2FA dựa trên TOTP để tăng cường bảo mật tài khoản.
-8. **Audit Logging:** Nhật ký kiểm toán toàn diện cho các use case yêu cầu compliance.
+1. Client gửi `id`, `license`, `HWID`, `timestamp`, `nonce`, `signature`.
+2. Server kiểm tra timestamp ±300s, signature và rate-limit.
+3. Script trả về được mã hóa XOR và có response signature.
 
-### 11. Bối cảnh Đóng góp Cá nhân
+**Protocol v3 — POST /api/v5/handshake (ECDH + AES-GCM)**
 
-Với vai trò trưởng nhóm, đóng góp chính của tôi cho dự án này gồm:
+1. Client tạo public key X25519 và gửi lên endpoint handshake.
+2. Server tạo keypair phiên, derive shared secret, derive AES key, mã hóa nội dung bằng AES-GCM.
+3. Response gồm server public key, encrypted payload, timestamp và chữ ký.
 
-- **Thiết kế và triển khai frontend website:** Thiết kế và xây dựng tất cả trang frontend (landing, login, register, dashboard, workspace IDE) với layout responsive, chuyển đổi theme và các thành phần tương tác.
-- **Điều phối nhóm và theo dõi tiến độ:** Quản lý phân chia công việc trong Team TheBois, tổ chức sync hàng tuần, theo dõi milestones và đảm bảo phối hợp giữa phát triển frontend và backend.
-- **Hỗ trợ kỹ thuật cơ bản:** Hỗ trợ các task hạ tầng cơ bản (cấu hình S3, setup CloudFront, review SAM template) nhưng không phải người chịu trách nhiệm chính cho kiến trúc bảo mật backend hoặc triển khai mã hóa — những phần này do các thành viên khác với chuyên môn sâu hơn về bảo mật đảm nhận.
+#### 4.3. Thuật toán và chuẩn bảo mật
+
+| Thuật toán | Ứng dụng cụ thể |
+|---|---|
+| PBKDF2-SHA256 (210.000 iter) | Băm mật khẩu người dùng, băm Workspace PIN |
+| HMAC-SHA256 | Ký auth token và ký request/response loader |
+| ECDH X25519 | Trao đổi khóa Protocol v3 (handshake) |
+| HKDF-SHA256 | Dẫn xuất AES key từ ECDH shared secret (RFC 5869) |
+| AES-256-GCM | Mã hóa script lưu S3 + mã hóa truyền tải Protocol v3 |
+| XOR + SHA-256 | Mã hóa truyền tải Protocol v2 |
+| crypto.timingSafeEqual | So sánh token/signature — chống timing attack |
+| Nonce + Timestamp ±5 phút | Chống replay attack trên mọi request loader |
+| S3 SSE-S3 (AES256) | Mã hóa object mặc định theo template hạ tầng |
+
+#### 4.4. Cơ sở dữ liệu — Amazon DynamoDB
+
+| Bảng DynamoDB | Partition Key / Sort Key | Chức năng |
+|---|---|---|
+| users | PK: userId | Tài khoản người dùng, role, password_changed_at |
+| workspaces | PK: workspaceId | Workspace, loader_key, encryption_key, PIN hash |
+| projects | PK: workspaceId, SK: projectId | Project (script), cài đặt bảo mật, execution count |
+| project_files | PK: projectId, SK: fileId | File/folder trong project, entry point, sort_order |
+| licenses | PK: workspaceId, SK: licenseKey | License key, HWID, ngày hết hạn, usage count |
+| access_lists | PK: workspaceId, SK: ip#type | IP blacklist / whitelist theo workspace |
+| workspace_members | PK: workspaceId, SK: userId | Thành viên được mời, vai trò |
+| workspace_invitations | PK: token | Token mời thành viên, **TTL tự động** |
+| pin_verifications | PK: sessionToken | Session token sau xác thực PIN, **TTL tự động** |
+| logs | PK: workspaceId, SK: timestamp#uuid | Nhật ký sự kiện, GSI trên country, timestamp |
+| app_config | PK: configKey | Cấu hình hệ thống (HMAC secret, loader secret…) |
+| rate_limits | PK: rateLimitKey | Sliding window với **TTL tự động** dọn dẹp |
+
+> **Lưu ý thiết kế**: TTL được bật trên `workspace_invitations`, `pin_verifications`, và `rate_limits` để tự động xóa records hết hạn mà không cần cronjob. GSI trên `country` và `timestamp` của bảng `logs` hỗ trợ truy vấn phân tích.
+
+---
+
+### 5. Lộ trình & Mốc triển khai
+
+| Giai đoạn | Nội dung | Thời gian dự kiến |
+|---|---|---|
+| 1. Phân tích & Thiết kế | Yêu cầu, schema DynamoDB, API design | Tuần 1–3 |
+| 2. Backend Core | Auth, workspace, project, file, license APIs | Tuần 4–6 |
+| 3. Bảo mật Loader | Protocol v2/v3, HWID, access policy, rate-limit | Tuần 7–9 |
+| 4. Frontend & Tích hợp | Dashboard/workspace, realtime, tích hợp cloud | Tuần 10 |
+| 5. Hardening & Tài liệu | Monitoring, deploy pipeline, báo cáo/worklog | Tuần 11–12 |
+
+---
+
+### 6. Ước tính ngân sách
+
+| Dịch vụ | Chi phí ước tính | Ghi chú |
+|---|---|---|
+| AWS Lambda | ~$0.00/tháng | On-demand, free tier 1M requests/tháng |
+| Amazon DynamoDB | ~$0.00–$1.00/tháng | On-demand capacity, miễn phí 25 GB storage |
+| Amazon S3 | ~$0.10–$0.50/tháng | Lưu frontend và object content |
+| Amazon CloudFront | ~$0.00–$1.00/tháng | 1 TB data transfer free/tháng đầu |
+| Amazon CloudWatch | ~$0.00–$0.50/tháng | Log retention 30 ngày, basic metrics miễn phí |
+| API Gateway | ~$0.01–$0.10/tháng | REST + WebSocket API |
+| **Tổng ước tính** | **~$1–3/tháng** | Mức demo/sinh viên |
+
+---
+
+### 7. Đánh giá rủi ro
+
+| Rủi ro | Mức ảnh hưởng | Xác suất | Chiến lược giảm thiểu |
+|---|---|---|---|
+| Cold start Lambda làm tăng latency | Trung bình | Trung bình | Tối ưu handler, theo dõi p95 duration trên CloudWatch |
+| DynamoDB throttling khi burst traffic | Cao | Thấp | On-demand capacity tự động scale; CloudWatch Alarm cảnh báo sớm |
+| S3 object PUT/GET lỗi | Cao | Thấp | Retry logic trong Lambda; S3 versioning bật để phục hồi |
+| Vượt ngân sách AWS | Trung bình | Thấp | AWS Budgets alert, tối ưu TTL và cache CloudFront |
+| Replay attack trên loader | Cao | Thấp | Timestamp ±5 phút + nonce + HMAC signature bắt buộc |
+
+**Kế hoạch dự phòng:**
+- Nếu endpoint chính gặp sự cố: fallback sang Lambda Function URL trực tiếp.
+- Nếu S3 không truy cập được: Lambda retry với exponential backoff, log lỗi vào CloudWatch.
+- Dùng SAM/CloudFormation để tái tạo hạ tầng nhanh khi cần.
+
+---
+
+### 8. Security Considerations
+
+1. Chữ ký request/response bằng HMAC-SHA256.
+2. Xác minh timestamp và nonce để giảm replay.
+3. Rate-limit theo IP/scope có TTL tự dọn dẹp.
+4. RBAC theo owner/admin/editor/viewer.
+5. HWID lock cho license khi cấu hình bật.
+6. IAM role giới hạn theo tài nguyên stack.
+
+---
+
+### 9. Monitoring / Logging / Validation
+
+1. CloudWatch alarms đang có sẵn cho `Errors`, `Throttles`, `Duration p95`.
+2. CloudWatch dashboard đang có widget theo dõi invocations/errors/throttles/duration.
+3. Bảng logs trên DynamoDB ghi nhận hành động theo workspace.
+4. Checklist validation đề xuất:
+  - Test login/register/rate-limit.
+  - Test execute v2 với chữ ký/timestamp sai.
+  - Test handshake v3 với public key sai.
+  - Test blacklist/whitelist theo IP.
+  - Kiểm tra metrics và alarms sau khi mô phỏng lỗi.
+
+---
+
+### 10. Deployment / Implementation Plan
+
+1. Build và deploy stack bằng AWS SAM (`sam build`, `sam deploy`).
+2. Sync frontend lên S3 host bucket.
+3. Invalidate CloudFront sau khi cập nhật frontend.
+4. Có thể dùng pipeline GitHub Actions để tự động hóa deploy.
+5. Kiểm tra outputs sau deploy: CloudFront domain, Lambda URL, WebSocket endpoint, DynamoDB table names.
+
+---
+
+### 11. Kết quả kỳ vọng
+
+**Kết quả kỹ thuật:**
+1. Nền tảng deploy được end-to-end trên AWS serverless.
+2. Luồng phân phối script có kiểm soát bằng signature, license, HWID, access policy.
+3. Có monitoring cơ bản và tài liệu triển khai tái lập được.
+
+**Giá trị dài hạn:**
+1. Có thể mở rộng thêm ngôn ngữ loader và service governance.
+2. Có nền tảng cho workshop cloud thực tế theo rubric FCJ.
+
+---
+
+### 12. Hướng phát triển
+
+1. Tích hợp đầy đủ luồng gửi email production qua SES.
+2. Bổ sung WAF rules cho edge protection.
+3. Chuyển sang SSE-KMS với CMK riêng cho S3 object encryption.
+4. Bổ sung AWS Budgets + Cost Anomaly Detection.
+5. Tăng độ phủ test tự động (unit/integration/security tests).

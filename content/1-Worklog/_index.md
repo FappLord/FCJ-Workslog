@@ -30,6 +30,6 @@ The worklog is organized week-by-week, covering the full journey from AWS onboar
 
 **Week 10:** [GuardScript — Frontend Implementation & Integration Testing](1.10-week10/)
 
-**Week 11:** [Week 11 Worklog](1.11-week11/)
+**Week 11:** [GuardScript — Security Hardening & Access Control](1.11-week11/)
 
-**Week 12:** [Week 12 Worklog](1.12-week12/)
+**Week 12:** [GuardScript — Documentation Finalization, Validation & Demo Readiness](1.12-week12/)

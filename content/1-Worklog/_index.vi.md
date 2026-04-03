@@ -30,6 +30,6 @@ Worklog được tổ chức theo từng tuần, bao quát toàn bộ hành trì
 
 **Tuần 10:** [GuardScript — Triển khai Frontend & Integration Testing](1.10-week10/)
 
-**Tuần 11:** [Worklog Tuần 11](1.11-week11/)
+**Tuần 11:** [GuardScript — Hardening bảo mật & Kiểm soát truy cập](1.11-week11/)
 
-**Tuần 12:** [Worklog Tuần 12](1.12-week12/)
+**Tuần 12:** [GuardScript — Hoàn thiện tài liệu, kiểm thử & chuẩn bị demo](1.12-week12/)
