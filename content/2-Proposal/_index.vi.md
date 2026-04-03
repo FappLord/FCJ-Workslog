@@ -38,9 +38,12 @@ Hệ thống được triển khai theo kiến trúc serverless trên AWS nhằm
 
 Trong thực tế phát triển script, nhóm gặp ba vấn đề chính:
 
-1. Source code dễ bị sao chép và tái phân phối trái phép.
-2. Thiếu cơ chế ràng buộc license theo phần cứng và thu hồi truy cập theo thời gian thực.
-3. Thiếu quan sát vận hành để phát hiện lạm dụng API hoặc lỗi hệ thống.
+1. Mã nguồn rất dễ bị rò rỉ hoặc sao chép khi được chia sẻ thủ công.
+2. Thiếu cơ chế phân quyền chi tiết cho từng người dùng hoặc từng nhóm.
+3. Khó theo dõi phiên bản, lịch sử truy cập và quá trình sử dụng.
+4. Thiếu cơ chế quản lý tập trung, dẫn đến dữ liệu bị phân mảnh.
+5. Hạn chế về khả năng kiểm toán, giám sát và các cơ chế bảo vệ.
+6. Hệ thống triển khai và bảo mật thường phức tạp và tốn kém.
 
 #### Giải pháp
 

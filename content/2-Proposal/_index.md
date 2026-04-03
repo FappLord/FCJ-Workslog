@@ -39,10 +39,13 @@ The solution uses a serverless AWS architecture to reduce operational overhead, 
 
 The team identified three key issues in script delivery workflows:
 
-1. Source code can be copied and redistributed without authorization.
-2. Access revocation and device-bound licensing are difficult to enforce.
-3. Operational visibility is often missing for abuse detection and troubleshooting.
-
+1. Source code can be easily leaked or copied when shared manually
+2. Lack of fine-grained access control for users or teams
+3. Difficulty in tracking versions, access, and usage history
+4. Absence of centralized management leading to fragmented data
+5. Limited auditing, monitoring, and protection mechanisms
+6. Deployment and security systems are often complex and costly
+ 
 #### Solution
 
 The proposed system addresses these issues through:
