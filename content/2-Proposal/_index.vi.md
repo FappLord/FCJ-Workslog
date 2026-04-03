@@ -202,13 +202,14 @@ Dự án áp dụng phương pháp **Agile Scrum** với 6 sprint (mỗi sprint 
 
 ### 5. Lộ trình & Mốc triển khai
 
-| Giai đoạn | Nội dung | Thời gian dự kiến |
+| Giai đoạn | Nội dung | Thời gian |
 |---|---|---|
-| 1. Phân tích & Thiết kế | Yêu cầu, schema DynamoDB, API design | Tuần 1–3 |
-| 2. Backend Core | Auth, workspace, project, file, license APIs | Tuần 4–6 |
-| 3. Bảo mật Loader | Protocol v2/v3, HWID, access policy, rate-limit | Tuần 7–9 |
-| 4. Frontend & Tích hợp | Dashboard/workspace, realtime, tích hợp cloud | Tuần 10 |
-| 5. Hardening & Tài liệu | Monitoring, deploy pipeline, báo cáo/worklog | Tuần 11–12 |
+| 1. Phân tích & Thiết kế kiến trúc | AWS onboarding, xác định scope GuardScript, thiết kế kiến trúc, schema DynamoDB, API design | Tuần 1–6 |
+| 2. Nền tảng Backend | Khởi động dự án, auth, workspace, project, file, license APIs | Tuần 7–8 |
+| 3. Script, File & Migrating AWS | Encryption module, tích hợp S3, setup Lambda/DynamoDB/CloudFront, loader protocols | Tuần 8–9 |
+| 4. Bảo mật & Kiểm soát truy cập | Hardening loader v2/v3, HWID lock, access-list policies, rate-limit validation | Tuần 9–11 |
+| 5. Frontend & Realtime | Dashboard/workspace UI, WebSocket, responsive design, kiểm thử tổng thể | Tuần 7–10 |
+| 6. CI/CD & Tài liệu | Deploy SAM/CloudFormation, CloudWatch monitoring, validation checklist, báo cáo cuối | Tuần 11–12 |
 
 ---
 

@@ -204,13 +204,14 @@ The project follows **Agile Scrum** methodology with 6 sprints (1 week each):
 
 ### 5. Roadmap & Milestones
 
-| Phase                 | Content                                                                       | Timeline   |
-| --------------------- | ----------------------------------------------------------------------------- | ---------- |
-| 1. Analysis & Design  | Requirements, DynamoDB schema, API and architecture design                    | Week 1–3   |
-| 2. Backend Core       | Auth, workspace, project, file, and license APIs                              | Week 4–6   |
-| 3. Loader Security    | Protocol v2/v3, HWID lock, access policy, rate limits                         | Week 7–9   |
-| 4. Frontend & Integrations | Dashboard/workspace UI and cloud integration                              | Week 10    |
-| 5. Hardening & Documentation | Monitoring baseline, deployment pipeline, final reporting             | Week 11–12 |
+| Phase                                   | Content                                                                                      | Timeline    |
+| --------------------------------------- | -------------------------------------------------------------------------------------------- | ----------- |
+| 1. Analysis & Architecture Design       | AWS onboarding, GuardScript scope definition, architecture design, DynamoDB schema, API planning | Week 1–6 |
+| 2. Backend Foundation                   | Project kickoff, auth, workspace, project, file, and license APIs                           | Week 7–8    |
+| 3. Script, File & AWS Migration         | Encryption module, S3 integration, Lambda/DynamoDB/CloudFront setup, loader protocols       | Week 8–9    |
+| 4. Security & Access Control            | Loader v2/v3 hardening, HWID lock, access-list policies, rate-limit validation               | Week 9–11   |
+| 5. Frontend & Realtime                  | Dashboard/workspace UI, WebSocket integration, responsive design, overall testing            | Week 7–10   |
+| 6. CI/CD & Documentation                | SAM/CloudFormation deployment, CloudWatch monitoring, validation checklist, final reporting  | Week 11–12  |
 
 ---
 
