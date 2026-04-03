@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 2. </b> "
 --------------------
 
-# GUARDSCRIPT — Code Protector Platform
+# GuardScript — Code Protector Platform
 
 ## Project Proposal
 
@@ -21,7 +21,7 @@ pre: " <b> 2. </b> "
 | Nguyễn Duy Tùng   | SE196572   | Member      |
 | Nguyễn Đức Trí    | SE194091   | Member      |
 
-**AWS Services (implemented in code/infra):** `Lambda` · `DynamoDB` · `S3` · `CloudFront` · `CloudWatch` · `API Gateway WebSocket`
+**AWS Services:** `Lambda` · `DynamoDB` · `S3` · `CloudFront` · `CloudWatch` · `API Gateway WebSocket` · `SES` · `SNS` · `WAF` · `ACM`
 
 ---
 
@@ -76,7 +76,7 @@ Client (browser / loader)
   → API Gateway WebSocket (real-time updates)
   → CloudWatch Logs / Alarms / Dashboard
 ```
-![IrisAuth System Architecture](/images/2-Proposal/architecture.jpg)
+![GuardScript System Architecture](/images/2-Proposal/architecture.jpg)
 
 #### AWS Services Used
 
@@ -86,6 +86,9 @@ Client (browser / loader)
 | Database       | Amazon DynamoDB           | Multi-table model, PAY_PER_REQUEST, TTL for temporary records |
 | Object Storage | Amazon S3                 | Frontend hosting and content objects |
 | CDN & Edge     | Amazon CloudFront         | Static delivery and route behaviors for `/api/*`, `/files/*` |
+| Edge Security  | AWS WAF                   | Protects against malicious web requests at CloudFront edge |
+| TLS/SSL        | AWS Certificate Manager   | Manages SSL/TLS certificates for HTTPS |
+| Notification   | Amazon SNS / SES          | Sends alerts and email notifications (invitations, alarms) |
 | Monitoring     | Amazon CloudWatch         | Alarms for errors/throttles/p95 duration + operational dashboard |
 | Real-time      | API Gateway WebSocket API | Workspace/user/admin event broadcasting |
 | Delivery       | GitHub Actions + SAM      | Automated infrastructure and frontend deployment |
@@ -141,22 +144,58 @@ Token format: `v2.<payload_base64url>.<signature_base64url>`
 
 #### 4.4. Database — Amazon DynamoDB
 
-| Table                   | Partition Key / Sort Key                | Purpose                                                |
-| ----------------------- | --------------------------------------- | ------------------------------------------------------ |
-| users                 | PK: userId                            | User accounts, roles, password_changed_at            |
-| workspaces            | PK: workspaceId                       | Workspace config, loader_key, encryption_key, PIN hash |
-| projects              | PK: workspaceId, SK: projectId      | Project settings, execution count                      |
-| project_files         | PK: projectId, SK: fileId           | Project file structure, entry point, ordering          |
-| licenses              | PK: workspaceId, SK: licenseKey    | License info, HWID, expiration, usage count            |
-| access_lists          | PK: workspaceId, SK: ip#type        | IP blacklist/whitelist                                 |
-| workspace_members     | PK: workspaceId, SK: userId         | Workspace members and roles                            |
-| workspace_invitations | PK: token                             | Team invitation tokens, **TTL enabled**                |
-| pin_verifications     | PK: sessionToken                      | PIN verification sessions, **TTL enabled**             |
-| logs                 | PK: workspaceId, SK: timestamp#uuid | Event logs, GSI on country, timestamp              |
-| app_config            | PK: configKey                         | System configs (HMAC secret, loader secret…)           |
-| rate_limits           | PK: rateLimitKey                      | Sliding window rate limiting with **TTL**              |
+| Table                   | Partition Key         | GSI(s)                                                        | Notes                                                  |
+| ----------------------- | --------------------- | ------------------------------------------------------------- | ------------------------------------------------------ |
+| users                 | id                  | EmailIndex(email)                                           | User accounts, roles, password_changed_at            |
+| workspaces            | id                  | OwnerIndex(user_id), LoaderKeyIndex(loader_key)           | Workspace config, loader_key, PIN hash                 |
+| projects              | id                  | WorkspaceIndex(workspace_id), SecretKeyIndex(secret_key)  | Project settings, execution count                      |
+| project_files         | id                  | ProjectIndex(project_id), ParentIndex(parent_id)          | Project file structure, entry point, ordering          |
+| licenses              | id                  | WorkspaceIndex(workspace_id), KeyIndex(key), ProjectIndex(project_id) | License info, HWID, expiration, usage count |
+| access_lists          | id                  | WorkspaceIndex(workspace_id)                               | IP blacklist/whitelist                                 |
+| workspace_members     | id                  | WorkspaceIndex(workspace_id), UserIndex(user_id)          | Workspace members and roles                            |
+| workspace_invitations | id                  | WorkspaceIndex, TokenIndex, EmailIndex — **TTL enabled**   | Team invitation tokens                                 |
+| pin_verifications     | token               | WorkspaceIndex(workspace_id) — **TTL enabled**             | PIN verification sessions                              |
+| logs                 | id                  | WorkspaceIndex(workspace_id), WorkspaceTimestampIndex(workspace_id + timestamp) | Event logs with timestamp-range query support |
+| app_config            | key                 | —                                                             | System configs (HMAC secret, loader secret…)           |
+| rate_limits           | key                 | — **TTL enabled**                                             | Sliding window rate limiting                           |
+| websocket_connections | connection_id       | UserIndex(user_id), WorkspaceIndex(workspace_id) — **TTL enabled** | Active WebSocket connections                   |
+| admin_audit           | id                  | ActorIndex(actor_user_id), TargetIndex(target_id)         | Admin action audit log                                 |
 
-> **Design Note**: TTL is enabled on `workspace_invitations`, `pin_verifications`, and `rate_limits` to automatically delete expired records without cron jobs. GSI on `country` and `timestamp` supports analytics queries.
+> **Design Note**: TTL is enabled on `workspace_invitations`, `pin_verifications`, `rate_limits`, and `websocket_connections` to automatically delete expired/disconnected records without cron jobs. `WorkspaceTimestampIndex` on `logs` supports time-range analytics queries.
+
+#### 4.5. Development Phases
+
+The project follows **Agile Scrum** methodology with 6 sprints (1 week each):
+
+**Sprint 1 — Analysis & Architecture Design**
+- Define system requirements
+- Design AWS architecture
+- Design database schema and APIs
+
+**Sprint 2 — Backend Foundation**
+- Set up Lambda project structure
+- Implement Auth, User, Workspace APIs
+- Integrate DynamoDB
+
+**Sprint 3 — Script & File Management**
+- CRUD for project, file, and content resources
+- S3 integration for upload/download
+- File tree structure and bundling
+
+**Sprint 4 — Security & Access Control**
+- Implement access control and licensing
+- Integrate script protection loader (Protocol v2/v3)
+- Build audit logging
+
+**Sprint 5 — Frontend & Realtime**
+- Develop dashboard UI
+- Integrate APIs
+- Configure WebSocket for real-time updates
+
+**Sprint 6 — CI/CD & Deployment**
+- Configure GitHub Actions pipeline
+- Deploy via AWS SAM/CloudFormation
+- Set up CloudWatch monitoring and alarms
 
 ---
 
@@ -174,15 +213,24 @@ Token format: `v2.<payload_base64url>.<signature_base64url>`
 
 ### 6. Cost Estimation
 
-| Service           | Estimated Cost     | Notes                           |
-| ----------------- | ------------------ | ------------------------------- |
-| AWS Lambda        | ~$0.00/month       | Free tier: 1M requests/month    |
-| Amazon DynamoDB   | ~$0.00–$1.00/month | On-demand, 25 GB free storage   |
-| Amazon S3         | ~$0.10–$0.50/month | Frontend + content storage      |
-| Amazon CloudFront | ~$0.00–$1.00/month | 1 TB free transfer (first year) |
-| Amazon CloudWatch | ~$0.00–$0.50/month | 30-day log retention            |
-| API Gateway       | ~$0.01–$0.10/month | REST + WebSocket                |
-| **Total**         | **~$1–3/month**    | Usage-based                     |
+Typical monthly infrastructure cost (Free Tier / Small Scale): **~$4.32/month**
+
+| Service               | Estimated Cost     | Notes                                      |
+| --------------------- | ------------------ | ------------------------------------------ |
+| AWS Lambda            | ~$0.00/month       | Free tier: 1M requests/month               |
+| Amazon DynamoDB       | ~$0.60/month       | On-demand; 25 GB free storage              |
+| Amazon S3             | ~$0.80/month       | Frontend hosting + content storage         |
+| Amazon CloudFront     | ~$0.77/month       | 1 TB free transfer (first year)            |
+| Amazon CloudWatch     | ~$0.50/month       | 30-day log retention, alarms, dashboard    |
+| API Gateway WebSocket | ~$0.35/month       | WebSocket connections                      |
+| Amazon SES            | ~$0.09/month       | Email notifications and invitations        |
+| Amazon SNS            | ~$0.00/month       | Alert notifications (mostly free tier)     |
+| AWS WAF               | ~$0.21/month       | Edge protection rules                      |
+| AWS ACM               | ~$0.00/month       | SSL/TLS certificates (free for CloudFront) |
+| AWS IAM               | ~$0.00/month       | No direct cost                             |
+| **Total**             | **~$4.32/month**   | Usage-based, serverless pay-per-use        |
+
+> Lambda and DynamoDB are mostly covered by the free tier at low usage levels.
 
 ---
 

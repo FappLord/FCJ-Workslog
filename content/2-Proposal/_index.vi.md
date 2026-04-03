@@ -20,7 +20,7 @@ pre: " <b> 2. </b> "
 | Nguyễn Duy Tùng | SE196572 | Thành viên |
 | Nguyễn Đức Trí | SE194091 | Thành viên |
 
-**AWS Services (đã dùng trong code/infra):** `Lambda` · `DynamoDB` · `S3` · `CloudFront` · `CloudWatch` · `API Gateway WebSocket`
+**AWS Services:** `Lambda` · `DynamoDB` · `S3` · `CloudFront` · `CloudWatch` · `API Gateway WebSocket` · `SES` · `SNS` · `WAF` · `ACM`
 
 ---
 
@@ -74,7 +74,7 @@ Client (browser / loader)
   → API Gateway WebSocket (real-time)
   → CloudWatch Logs / Alarms / Dashboard
 ```
-![Kiến trúc hệ thống IrisAuth](/images/2-Proposal/architecture.jpg)
+![Kiến trúc hệ thống GuardScript](/images/2-Proposal/architecture.jpg)
 
 #### Dịch vụ AWS sử dụng
 
@@ -84,6 +84,9 @@ Client (browser / loader)
 | Database | Amazon DynamoDB | Multi-table, PAY_PER_REQUEST, có TTL cho dữ liệu tạm |
 | Object Storage | Amazon S3 | Lưu frontend và content/script object |
 | CDN & Edge | Amazon CloudFront | Route static + cache + behavior cho /api/* và /files/* |
+| Edge Security | AWS WAF | Bảo vệ chống request độc hại tại CloudFront edge |
+| TLS/SSL | AWS Certificate Manager | Quản lý chứng chỉ SSL/TLS cho HTTPS |
+| Thông báo | Amazon SNS / SES | Gửi cảnh báo và email (mời thành viên, alarms) |
 | Monitoring | Amazon CloudWatch | Alarms cho errors/throttles/p95, dashboard vận hành |
 | Real-time | API Gateway WebSocket API | Đồng bộ sự kiện workspace/user/admin |
 | CI/CD | GitHub Actions + SAM | Deploy hạ tầng và đồng bộ frontend |
@@ -139,22 +142,58 @@ Token được tự implement theo cấu trúc `v2.<payload_base64url>.<signatur
 
 #### 4.4. Cơ sở dữ liệu — Amazon DynamoDB
 
-| Bảng DynamoDB | Partition Key / Sort Key | Chức năng |
-|---|---|---|
-| users | PK: userId | Tài khoản người dùng, role, password_changed_at |
-| workspaces | PK: workspaceId | Workspace, loader_key, encryption_key, PIN hash |
-| projects | PK: workspaceId, SK: projectId | Project (script), cài đặt bảo mật, execution count |
-| project_files | PK: projectId, SK: fileId | File/folder trong project, entry point, sort_order |
-| licenses | PK: workspaceId, SK: licenseKey | License key, HWID, ngày hết hạn, usage count |
-| access_lists | PK: workspaceId, SK: ip#type | IP blacklist / whitelist theo workspace |
-| workspace_members | PK: workspaceId, SK: userId | Thành viên được mời, vai trò |
-| workspace_invitations | PK: token | Token mời thành viên, **TTL tự động** |
-| pin_verifications | PK: sessionToken | Session token sau xác thực PIN, **TTL tự động** |
-| logs | PK: workspaceId, SK: timestamp#uuid | Nhật ký sự kiện, GSI trên country, timestamp |
-| app_config | PK: configKey | Cấu hình hệ thống (HMAC secret, loader secret…) |
-| rate_limits | PK: rateLimitKey | Sliding window với **TTL tự động** dọn dẹp |
+| Bảng DynamoDB | Partition Key | GSI | Ghi chú |
+|---|---|---|---|
+| users | id | EmailIndex(email) | Tài khoản người dùng, role, password_changed_at |
+| workspaces | id | OwnerIndex(user_id), LoaderKeyIndex(loader_key) | Workspace, loader_key, PIN hash |
+| projects | id | WorkspaceIndex(workspace_id), SecretKeyIndex(secret_key) | Project (script), cài đặt bảo mật, execution count |
+| project_files | id | ProjectIndex(project_id), ParentIndex(parent_id) | File/folder trong project, entry point, sort_order |
+| licenses | id | WorkspaceIndex(workspace_id), KeyIndex(key), ProjectIndex(project_id) | License key, HWID, ngày hết hạn, usage count |
+| access_lists | id | WorkspaceIndex(workspace_id) | IP blacklist / whitelist theo workspace |
+| workspace_members | id | WorkspaceIndex(workspace_id), UserIndex(user_id) | Thành viên được mời, vai trò |
+| workspace_invitations | id | WorkspaceIndex, TokenIndex, EmailIndex — **TTL tự động** | Token mời thành viên |
+| pin_verifications | token | WorkspaceIndex(workspace_id) — **TTL tự động** | Session token sau xác thực PIN |
+| logs | id | WorkspaceIndex(workspace_id), WorkspaceTimestampIndex(workspace_id + timestamp) | Nhật ký sự kiện, hỗ trợ truy vấn theo khoảng thời gian |
+| app_config | key | — | Cấu hình hệ thống (HMAC secret, loader secret…) |
+| rate_limits | key | — **TTL tự động** | Sliding window rate limiting |
+| websocket_connections | connection_id | UserIndex(user_id), WorkspaceIndex(workspace_id) — **TTL tự động** | Các kết nối WebSocket đang hoạt động |
+| admin_audit | id | ActorIndex(actor_user_id), TargetIndex(target_id) | Nhật ký hành động admin |
 
-> **Lưu ý thiết kế**: TTL được bật trên `workspace_invitations`, `pin_verifications`, và `rate_limits` để tự động xóa records hết hạn mà không cần cronjob. GSI trên `country` và `timestamp` của bảng `logs` hỗ trợ truy vấn phân tích.
+> **Lưu ý thiết kế**: TTL được bật trên `workspace_invitations`, `pin_verifications`, `rate_limits`, và `websocket_connections` để tự động xóa records hết hạn/đã ngắt kết nối mà không cần cronjob. `WorkspaceTimestampIndex` trên bảng `logs` hỗ trợ truy vấn phân tích theo khoảng thời gian.
+
+#### 4.5. Các giai đoạn phát triển
+
+Dự án áp dụng phương pháp **Agile Scrum** với 6 sprint (mỗi sprint 1 tuần):
+
+**Sprint 1 — Phân tích & Thiết kế kiến trúc**
+- Xác định yêu cầu hệ thống
+- Thiết kế kiến trúc AWS
+- Thiết kế schema database và API
+
+**Sprint 2 — Nền tảng Backend**
+- Thiết lập cấu trúc project Lambda
+- Triển khai Auth, User, Workspace APIs
+- Tích hợp DynamoDB
+
+**Sprint 3 — Quản lý Script & File**
+- CRUD cho project, file và content
+- Tích hợp S3 cho upload/download
+- Cấu trúc file tree và bundling
+
+**Sprint 4 — Bảo mật & Kiểm soát truy cập**
+- Triển khai access control và licensing
+- Tích hợp loader bảo vệ script (Protocol v2/v3)
+- Xây dựng audit logging
+
+**Sprint 5 — Frontend & Realtime**
+- Phát triển dashboard UI
+- Tích hợp APIs
+- Cấu hình WebSocket cho cập nhật thời gian thực
+
+**Sprint 6 — CI/CD & Triển khai**
+- Cấu hình GitHub Actions pipeline
+- Deploy qua AWS SAM/CloudFormation
+- Thiết lập CloudWatch monitoring và alarms
 
 ---
 
@@ -172,15 +211,24 @@ Token được tự implement theo cấu trúc `v2.<payload_base64url>.<signatur
 
 ### 6. Ước tính ngân sách
 
+Chi phí hạ tầng hàng tháng điển hình (Free Tier / Quy mô nhỏ): **~$4.32/tháng**
+
 | Dịch vụ | Chi phí ước tính | Ghi chú |
 |---|---|---|
-| AWS Lambda | ~$0.00/tháng | On-demand, free tier 1M requests/tháng |
-| Amazon DynamoDB | ~$0.00–$1.00/tháng | On-demand capacity, miễn phí 25 GB storage |
-| Amazon S3 | ~$0.10–$0.50/tháng | Lưu frontend và object content |
-| Amazon CloudFront | ~$0.00–$1.00/tháng | 1 TB data transfer free/tháng đầu |
-| Amazon CloudWatch | ~$0.00–$0.50/tháng | Log retention 30 ngày, basic metrics miễn phí |
-| API Gateway | ~$0.01–$0.10/tháng | REST + WebSocket API |
-| **Tổng ước tính** | **~$1–3/tháng** | Mức demo/sinh viên |
+| AWS Lambda | ~$0.00/tháng | Free tier: 1M requests/tháng |
+| Amazon DynamoDB | ~$0.60/tháng | On-demand; miễn phí 25 GB storage |
+| Amazon S3 | ~$0.80/tháng | Lưu frontend và object content |
+| Amazon CloudFront | ~$0.77/tháng | 1 TB data transfer free/tháng đầu |
+| Amazon CloudWatch | ~$0.50/tháng | Log retention 30 ngày, alarms, dashboard |
+| API Gateway WebSocket | ~$0.35/tháng | Kết nối WebSocket |
+| Amazon SES | ~$0.09/tháng | Email thông báo và mời thành viên |
+| Amazon SNS | ~$0.00/tháng | Cảnh báo (chủ yếu trong free tier) |
+| AWS WAF | ~$0.21/tháng | Quy tắc bảo vệ edge |
+| AWS ACM | ~$0.00/tháng | Chứng chỉ SSL/TLS (miễn phí cho CloudFront) |
+| AWS IAM | ~$0.00/tháng | Không tính phí trực tiếp |
+| **Tổng ước tính** | **~$4.32/tháng** | Pay-per-use, serverless |
+
+> Lambda và DynamoDB chủ yếu nằm trong free tier ở mức sử dụng thấp.
 
 ---
 
