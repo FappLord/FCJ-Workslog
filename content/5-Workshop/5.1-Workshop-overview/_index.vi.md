@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.1. </b> "
 ---
 
-# Tổng quan
-
 ## Các thành phần hệ thống
 
 **GuardScript** là nền tảng phân phối script serverless theo cơ chế loader kiểm soát truy cập. Thay vì chia sẻ source code trực tiếp, nội dung script được phục vụ qua các endpoint có kiểm soát với xác thực chữ ký, bảo vệ replay bằng timestamp/nonce, kiểm tra license, HWID binding và access policy theo workspace.

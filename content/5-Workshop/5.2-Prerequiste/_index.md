@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.2. </b> "
 ---
 
-# Prerequisites
-
 Before starting the deployment, ensure you have the following tools and access ready.
 
 ## 🔑 Required Access

@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.5. </b> "
 ---
 
-# Phase 3: Deploy Frontend
-
 In this phase you will upload the static frontend assets to the S3 frontend bucket, then invalidate the CloudFront cache so the new assets are served immediately.
 
 ## Step 1: Configure the Frontend API Endpoint

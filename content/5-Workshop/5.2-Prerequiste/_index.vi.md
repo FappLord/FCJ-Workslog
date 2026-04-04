@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.2. </b> "
 ---
 
-# Chuẩn bị
-
 Trước khi bắt đầu triển khai, hãy đảm bảo bạn đã chuẩn bị đầy đủ các công cụ và quyền truy cập sau.
 
 ## 🔑 Quyền truy cập cần thiết

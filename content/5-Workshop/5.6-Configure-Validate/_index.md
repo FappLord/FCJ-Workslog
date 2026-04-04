@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.6. </b> "
 ---
 
-# Phase 4: Configure & Validate
-
 In this final setup phase you will seed the required initial configuration into DynamoDB and run smoke tests to validate the deployment end-to-end.
 
 ## Step 1: Seed App Configuration (DynamoDB)

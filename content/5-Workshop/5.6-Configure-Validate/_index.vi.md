@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.6. </b> "
 ---
 
-# Giai đoạn 4: Cấu hình & Kiểm tra
-
 Trong giai đoạn cuối này bạn sẽ seed cấu hình khởi tạo vào DynamoDB và chạy smoke tests để kiểm tra toàn bộ deployment.
 
 ## Bước 1: Seed App Configuration (DynamoDB)

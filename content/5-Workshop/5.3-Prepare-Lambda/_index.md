@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.3. </b> "
 ---
 
-# Phase 1: Prepare Lambda Artifacts
-
 Before deploying the CloudFormation stack, you need to package the Lambda source code and upload it to an S3 bucket. AWS SAM will reference this artifact during deployment.
 
 ## Step 1: Install Dependencies

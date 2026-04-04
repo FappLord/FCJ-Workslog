@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.7. </b> "
 ---
 
-# Dọn dẹp tài nguyên
-
 Khi bạn hoàn thành workshop, hãy làm theo các bước sau để xóa toàn bộ tài nguyên AWS và tránh phát sinh chi phí.
 
 > **Lưu ý quan trọng:** Các S3 bucket (`FrontendBucket` và `ContentBucket`) được cấu hình `DeletionPolicy: Retain` trong CloudFormation template. Bạn phải làm trống và xóa chúng **thủ công** sau khi xóa CloudFormation stack.

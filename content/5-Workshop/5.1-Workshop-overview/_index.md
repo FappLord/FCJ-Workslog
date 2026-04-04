@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.1. </b> "
 ---
 
-# Overview
-
 ## System Components
 
 **GuardScript** is a serverless script distribution platform with loader-based access control. Instead of sharing source code directly, script content is served through controlled endpoints with signature verification, timestamp/nonce replay protection, license enforcement, HWID binding, and workspace access policies.

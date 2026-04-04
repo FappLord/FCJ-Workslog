@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.5. </b> "
 ---
 
-# Giai đoạn 3: Triển khai Frontend
-
 Trong giai đoạn này bạn sẽ upload các static frontend assets lên S3 frontend bucket, sau đó invalidate CloudFront cache để các file mới được phục vụ ngay lập tức.
 
 ## Bước 1: Cấu hình API Endpoint cho Frontend

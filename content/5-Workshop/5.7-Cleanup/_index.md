@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.7. </b> "
 ---
 
-# Cleanup
-
 When you are finished with the workshop, follow these steps to remove all AWS resources and avoid ongoing charges.
 
 > **Important:** The S3 buckets (`FrontendBucket` and `ContentBucket`) are set to `DeletionPolicy: Retain` in the CloudFormation template. You must empty and delete them **manually** after deleting the CloudFormation stack.

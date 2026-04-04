@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.3. </b> "
 ---
 
-# Giai đoạn 1: Chuẩn bị Lambda Artifacts
-
 Trước khi deploy CloudFormation stack, bạn cần đóng gói source code Lambda và upload lên S3 bucket. AWS SAM sẽ tham chiếu artifact này trong quá trình deploy.
 
 ## Bước 1: Cài đặt Dependencies
