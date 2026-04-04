@@ -35,14 +35,14 @@ chapter: false
 ### 2. Team TheBois Information
 Below is the organizational structure and professional distribution of the team:
 
-| No. | Full Name | Role | Track | Note |
-|:---:|:---|:---|:---|:---|
-| **1** | **Vo Tan Phat** | **Leader** | **AI** | General Management & AI Direction |
-| 2 | Duong Nguyen Binh | Member | AI | AI Solutions Implementation |
-| 3 | Nguyen Duc Tri | Member | IA | Information Assurance |
-| 4 | Tran Vinh | Member | IA | Information Assurance |
-| 5 | Nguyen Duy Tung | Member | IA | Information Assurance |
-| 6 | Bui Minh Hien | Member | IA / Cyber | Cyber Security & Backend |
+| No. | Full Name | Role | Track |
+|:---:|:---|:---|:---|
+| **1** | **Vo Tan Phat** | **Leader** | **AI** |
+| 2 | Duong Nguyen Binh | Member | AI |
+| 3 | Nguyen Duc Tri | Member | IA |
+| 4 | Tran Vinh | Member | IA |
+| 5 | Nguyen Duy Tung | Member | IA |
+| 6 | Bui Minh Hien | Member | IA |
 
 ---
 
@@ -50,8 +50,7 @@ Below is the organizational structure and professional distribution of the team:
 
 1.  [Worklog](1-Worklog/)
 2.  [Proposal](2-Proposal/)
-3.  [Translated Blogs](3-BlogsTranslated/)
-4.  [Participated Events](4-EventParticipated/)
-5.  [Workshop](5-Workshop/)
-6.  [Self-evaluation](6-Self-evaluation/)
-7.  [Feedback](7-Feedback/)
+3.  [Participated Events](4-EventParticipated/)
+4.  [Workshop](5-Workshop/)
+5.  [Self-evaluation](6-Self-evaluation/)
+6.  [Feedback](7-Feedback/)

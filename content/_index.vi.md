@@ -35,14 +35,14 @@ chapter: false
 ### 2. Thông tin Team TheBois
 Dưới đây là cơ cấu tổ chức và phân công chuyên môn của team:
 
-| STT | Họ và tên | Vai trò (Role) | Chuyên môn (Track) | Ghi chú |
-|:---:|:---|:---|:---|:---|
-| **1** | **Võ Tấn Phát** | **Leader** | **AI** | Quản lý chung & Định hướng AI |
-| 2 | Dương Nguyên Bình | Member | AI | Triển khai giải pháp AI |
-| 3 | Nguyễn Đức Trí | Member | IA | Information Assurance |
-| 4 | Trần Vinh | Member | IA | Information Assurance |
-| 5 | Nguyễn Duy Tùng | Member | IA | Information Assurance |
-| 6 | Bùi Minh Hiển | Member | IA / Cyber | Cyber Security & Backend |
+| STT | Họ và tên | Vai trò (Role) | Chuyên môn (Track) |
+|:---:|:---|:---|:---|
+| **1** | **Võ Tấn Phát** | **Leader** | **AI** |
+| 2 | Dương Nguyên Bình | Member | AI |
+| 3 | Nguyễn Đức Trí | Member | IA |
+| 4 | Trần Vinh | Member | IA |
+| 5 | Nguyễn Duy Tùng | Member | IA |
+| 6 | Bùi Minh Hiển | Member | IA |
 
 ---
 
@@ -50,8 +50,7 @@ Dưới đây là cơ cấu tổ chức và phân công chuyên môn của team:
 
 1.  [Worklog (Nhật ký công việc)](1-Worklog/)
 2.  [Proposal (Đề xuất giải pháp)](2-Proposal/)
-3.  [Các bài blogs đã dịch](3-BlogsTranslated/)
-4.  [Các events đã tham gia](4-EventParticipated/)
-5.  [Workshop (Bài thực hành)](5-Workshop/)
-6.  [Tự đánh giá](6-Self-evaluation/)
-7.  [Chia sẻ, đóng góp ý kiến](7-Feedback/)
+3.  [Các events đã tham gia](4-EventParticipated/)
+4.  [Workshop (Bài thực hành)](5-Workshop/)
+5.  [Tự đánh giá](6-Self-evaluation/)
+6.  [Chia sẻ, đóng góp ý kiến](7-Feedback/)
