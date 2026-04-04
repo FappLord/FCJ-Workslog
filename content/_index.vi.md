@@ -50,7 +50,7 @@ Dưới đây là cơ cấu tổ chức và phân công chuyên môn của team:
 
 1.  [Worklog (Nhật ký công việc)](1-Worklog/)
 2.  [Proposal (Đề xuất giải pháp)](2-Proposal/)
-3.  [Các events đã tham gia](4-EventParticipated/)
-4.  [Workshop (Bài thực hành)](5-Workshop/)
-5.  [Tự đánh giá](6-Self-evaluation/)
-6.  [Chia sẻ, đóng góp ý kiến](7-Feedback/)
+3.  [Các events đã tham gia](3-EventParticipated/)
+4.  [Workshop](4-Workshop/)
+5.  [Tự đánh giá](5-Self-evaluation/)
+6.  [Chia sẻ, đóng góp ý kiến](6-Feedback/)

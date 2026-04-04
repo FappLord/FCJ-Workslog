@@ -50,7 +50,7 @@ Below is the organizational structure and professional distribution of the team:
 
 1.  [Worklog](1-Worklog/)
 2.  [Proposal](2-Proposal/)
-3.  [Participated Events](4-EventParticipated/)
-4.  [Workshop](5-Workshop/)
-5.  [Self-evaluation](6-Self-evaluation/)
-6.  [Feedback](7-Feedback/)
+3.  [Participated Events](3-EventParticipated/)
+4.  [Workshop](4-Workshop/)
+5.  [Self-evaluation](5-Self-evaluation/)
+6.  [Feedback](6-Feedback/)
