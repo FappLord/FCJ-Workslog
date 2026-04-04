@@ -11,7 +11,7 @@ Official documentation and worklog for my internship at the **First Cloud AI Jou
 | Role | Team Lead — AI Engineer |
 | Team | TheBois |
 | Program | First Cloud AI Journey 2026 |
-| Period | From 05/01/2026 |
+| Period | 05/01/2026 – 18/04/2026 |
 
 ## Team TheBois
 

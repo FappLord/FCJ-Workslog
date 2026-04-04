@@ -26,7 +26,7 @@ chapter: false
 
 &emsp; **Team:** **TheBois**
 
-&emsp; **Internship Period:** From 05/01/2026
+&emsp; **Internship Period:** 05/01/2026 – 18/04/2026
 
 ![Avatar](/images/avatar.jpg)
 

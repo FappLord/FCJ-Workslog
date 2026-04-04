@@ -1,39 +1,52 @@
----
+﻿---
 title: "Self-Assessment"
-date: 2024-01-01
+date: 2026-03-26
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Self-Assessment
 
-During my internship at **[Company/Organization Name]** from **[start date]** to **[end date]**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
-I participated in **[briefly describe the main project or task]**, through which I improved my skills in **[list skills: programming, analysis, reporting, communication, etc.]**.  
+During my internship at **Amazon Web Services Vietnam** as part of the **First Cloud AI Journey 2026** program (05/01/2026 – 18/04/2026), I had the opportunity to apply and significantly deepen my understanding of cloud-native development in a real project context.
 
-In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
+As **Team Lead** of Team TheBois, I led the design and end-to-end implementation of **GuardScript** — a serverless script distribution platform with loader-based access control deployed on AWS. This involved hands-on work across architecture design, backend development (Node.js Lambda), infrastructure as code (AWS SAM / CloudFormation), security implementation (HMAC, ECDH, AES-GCM), and frontend integration.
 
-To objectively reflect on my internship period, I would like to evaluate myself based on the following criteria:
+Throughout the program I consistently pushed myself beyond comfort, tackling challenges in cryptographic protocol design, DynamoDB multi-table modeling, CloudFront behavior configuration, and real-time WebSocket integration — areas that were largely new to me at the outset.
 
-| No. | Criteria                            | Description                                                                                      | Good | Fair | Average |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | ---- | ---- | ------- |
-| 1   | **Professional knowledge & skills** | Understanding of the field, applying knowledge in practice, proficiency with tools, work quality | ✅    | ☐    | ☐       |
-| 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ☐    | ✅    | ☐       |
-| 3   | **Proactiveness**                   | Taking initiative, seeking out tasks without waiting for instructions                            | ✅    | ☐    | ☐       |
-| 4   | **Sense of responsibility**         | Completing tasks on time and ensuring quality                                                    | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ☐    | ✅       |
-| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ☐    | ✅    | ☐       |
-| 7   | **Communication**                   | Presenting ideas and reporting work clearly                                                      | ☐    | ✅    | ☐       |
-| 8   | **Teamwork**                        | Working effectively with colleagues and participating in teams                                   | ✅    | ☐    | ☐       |
-| 9   | **Professional conduct**            | Respecting colleagues, partners, and the work environment                                        | ✅    | ☐    | ☐       |
-| 10  | **Problem-solving skills**          | Identifying problems, proposing solutions, and showing creativity                                | ☐    | ✅    | ☐       |
-| 11  | **Contribution to project/team**    | Work effectiveness, innovative ideas, recognition from the team                                  | ✅    | ☐    | ☐       |
-| 12  | **Overall**                         | General evaluation of the entire internship period                                               | ✅    | ☐    | ☐       |
+---
 
-### Needs Improvement
+## Self-Evaluation Table
 
-* Strengthen discipline and strictly comply with the rules and regulations of the company or any organization  
-* Improve problem-solving thinking  
-* Enhance communication skills in both daily interactions and professional contexts, including handling situations effectively
+| No. | Criteria | Description | Good | Fair | Average |
+|:---:|---|---|:---:|:---:|:---:|
+| 1 | **Professional knowledge & skills** | Applying AWS services, Node.js, security algorithms, IaC in a real project | ✅ | ☐ | ☐ |
+| 2 | **Ability to learn** | Absorbing new services and concepts (X25519 ECDH, SAM, CloudFront behaviors) quickly | ✅ | ☐ | ☐ |
+| 3 | **Proactiveness** | Self-directed research, proposing architecture decisions, raising blockers early | ✅ | ☐ | ☐ |
+| 4 | **Sense of responsibility** | Delivering sprint tasks on time, owning design decisions as Team Lead | ✅ | ☐ | ☐ |
+| 5 | **Discipline** | Adhering to sprint schedules and team commitments | ☐ | ✅ | ☐ |
+| 6 | **Progressive mindset** | Actively seeking feedback on architecture and security design | ✅ | ☐ | ☐ |
+| 7 | **Communication** | Writing documentation, presenting technical decisions clearly to the team | ☐ | ✅ | ☐ |
+| 8 | **Teamwork** | Coordinating task distribution across 6 team members, unblocking teammates | ✅ | ☐ | ☐ |
+| 9 | **Professional conduct** | Maintaining respectful, constructive collaboration throughout the program | ✅ | ☐ | ☐ |
+| 10 | **Problem-solving skills** | Diagnosing system issues, iterating on security protocol design | ☐ | ✅ | ☐ |
+| 11 | **Contribution to project/team** | Core architect and primary implementer of GuardScript | ✅ | ☐ | ☐ |
+| 12 | **Overall** | Delivered a complete, production-grade serverless platform within the internship period | ✅ | ☐ | ☐ |
+
+---
+
+## Areas for Improvement
+
+1. **Discipline & time management** — Sprint deadlines were met, but task estimation accuracy and buffer planning need improvement for larger-scale work.
+2. **Technical communication** — I can explain architecture well one-on-one but need to improve at writing concise, audience-appropriate summaries for non-technical stakeholders.
+3. **Delegation** — As Team Lead, I tended to take on too many implementation tasks myself rather than distributing more evenly across the team.
+4. **Testing discipline** — More emphasis on automated testing (unit, integration) from the start of development would have caught several edge cases earlier.
+
+---
+
+## Key Takeaways
+
+- Building a production-quality serverless system requires careful attention to IAM scoping, TTL-based cleanup, and security at every layer.
+- AWS SAM + CloudFormation significantly reduces deployment complexity but requires a thorough understanding of resource dependencies.
+- Real-time features (WebSocket API) add meaningful user experience value but introduce connection-state management complexity.
+- The FCJ program provided an environment where I could take genuine technical ownership — a rare opportunity that accelerated my growth considerably.

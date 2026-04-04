@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-Nhật ký công việc này ghi lại **12 tuần** thực tập tại chương trình **First Cloud AI Journey (FCJ) 2026**, bắt đầu từ ngày **05/01/2026**. Với vai trò **Team Lead** của **Team TheBois**, tôi chịu trách nhiệm thiết kế & triển khai frontend, điều phối nhóm và hỗ trợ thiết lập hạ tầng cho dự án chính — **GuardScript**, nền tảng AWS serverless cho phân phối script mã hóa và quản lý license.
+Nhật ký công việc này ghi lại **12 tuần** thực tập tại chương trình **First Cloud AI Journey (FCJ) 2026**, từ ngày **05/01/2026** đến **18/04/2026**. Với vai trò **Team Lead** của **Team TheBois**, tôi chịu trách nhiệm thiết kế & triển khai frontend, điều phối nhóm và hỗ trợ thiết lập hạ tầng cho dự án chính — **GuardScript**, nền tảng AWS serverless cho phân phối script mã hóa và quản lý license.
 
 Worklog được tổ chức theo từng tuần, bao quát toàn bộ hành trình từ làm quen AWS đến xây dựng và triển khai nền tảng GuardScript:
 

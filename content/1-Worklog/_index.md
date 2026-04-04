@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-This worklog documents **12 weeks** of my internship at the **First Cloud AI Journey (FCJ) 2026** program, starting from **January 5, 2026**. As the **Team Lead** of **Team TheBois**, I was responsible for frontend design & implementation, team coordination, and supporting infrastructure setup for our main project — **GuardScript**, a serverless AWS platform for encrypted script distribution and license management.
+This worklog documents **12 weeks** of my internship at the **First Cloud AI Journey (FCJ) 2026** program, from **January 5, 2026** to **April 18, 2026**. As the **Team Lead** of **Team TheBois**, I was responsible for frontend design & implementation, team coordination, and supporting infrastructure setup for our main project — **GuardScript**, a serverless AWS platform for encrypted script distribution and license management.
 
 The worklog is organized week-by-week, covering the full journey from AWS onboarding to building and deploying the GuardScript platform:
 
