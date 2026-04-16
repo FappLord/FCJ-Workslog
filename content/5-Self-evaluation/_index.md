@@ -20,15 +20,15 @@ Throughout the program I consistently pushed myself beyond comfort, tackling cha
 
 | No. | Criteria | Description | Good | Fair | Average |
 |:---:|---|---|:---:|:---:|:---:|
-| 1 | **Professional knowledge & skills** | Applying AWS services, Node.js, security algorithms, IaC in a real project | ✅ | ☐ | ☐ |
-| 2 | **Ability to learn** | Absorbing new services and concepts (X25519 ECDH, SAM, CloudFront behaviors) quickly | ✅ | ☐ | ☐ |
+| 1 | **Professional knowledge & skills** | Applying AWS services, Node.js, security algorithms, IaC in a real project | ☐ | ✅ | ☐ |
+| 2 | **Ability to learn** | Absorbing new services and concepts (X25519 ECDH, SAM, CloudFront behaviors) quickly | ☐ | ✅ | ☐ |
 | 3 | **Proactiveness** | Self-directed research, proposing architecture decisions, raising blockers early | ✅ | ☐ | ☐ |
 | 4 | **Sense of responsibility** | Delivering sprint tasks on time, owning design decisions as Team Lead | ✅ | ☐ | ☐ |
 | 5 | **Discipline** | Adhering to sprint schedules and team commitments | ☐ | ✅ | ☐ |
 | 6 | **Progressive mindset** | Actively seeking feedback on architecture and security design | ✅ | ☐ | ☐ |
 | 7 | **Communication** | Writing documentation, presenting technical decisions clearly to the team | ☐ | ✅ | ☐ |
 | 8 | **Teamwork** | Coordinating task distribution across 6 team members, unblocking teammates | ✅ | ☐ | ☐ |
-| 9 | **Professional conduct** | Maintaining respectful, constructive collaboration throughout the program | ✅ | ☐ | ☐ |
+| 9 | **Professional conduct** | Maintaining respectful, constructive collaboration throughout the program | ☐ | ✅ | ☐ |
 | 10 | **Problem-solving skills** | Diagnosing system issues, iterating on security protocol design | ☐ | ✅ | ☐ |
 | 11 | **Contribution to project/team** | Core architect and primary implementer of GuardScript | ✅ | ☐ | ☐ |
 | 12 | **Overall** | Delivered a complete, production-grade serverless platform within the internship period | ✅ | ☐ | ☐ |
